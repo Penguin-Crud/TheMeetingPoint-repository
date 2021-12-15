@@ -50,16 +50,6 @@
 <body>
     
   <header>
-    @auth
-        <a href="{{ route('events.create') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Create (Only admin)</a> 
-       {{--<a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">My events</a>--}}
-    @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-        @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-        @endif
-    @endauth
     <div class="collapse bg-dark" id="navbarHeader">
       <div class="container">
         <div class="row">
@@ -68,12 +58,20 @@
             <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
           </div>
           <div class="col-sm-4 offset-md-1 py-4">
-               
             <h4 class="text-white">Contact</h4>
             <ul class="list-unstyled">
               @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                   <p>Aquí no funciona</p>
+                    @auth
+                        {{-- <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a> --}}
+                       {{-- <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">My events</a>--}}
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                    @endauth
                 </div>
               @endif
             </ul>
@@ -98,27 +96,18 @@
 
     <div class="album py-5 bg-light">
       <div class="container">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          @foreach ($events as $itemEvent)
-              
-          <div class="col">
-            <div class="card shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ $itemEvent->image }}" alt="No funciona">
-              <div class="card-body">
-                <p class="card-text">{{$itemEvent->title}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
+        <form action="{{  route('events.store')  }}" method="POST">
+          @csrf
+          <div class="form-group">
+            <label for="exampleInputEmail1">TITLE</label>
+            <input name='title' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
           </div>
-          @endforeach
-        </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">IMAGE URL</label>
+            <input name='image' type="url" class="form-control" id="exampleInputPassword1" >
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
 

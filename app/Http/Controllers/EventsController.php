@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\events;
 use App\Http\Requests\StoreeventsRequest;
 use App\Http\Requests\UpdateeventsRequest;
+use App\Models\Events as ModelsEvents;
+use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
@@ -15,7 +17,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('landing');
+        $events = Events::all();
+        return view('landing', ['events'=> $events]);
     }
 
     /**
@@ -25,7 +28,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('eventCreate');
+        
     }
 
     /**
@@ -34,9 +38,15 @@ class EventsController extends Controller
      * @param  \App\Http\Requests\StoreeventsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreeventsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $data = [
+            'title' => $request->title,
+            'image' => $request->image,
+        ];
+
+        Events::create($data);
+        return redirect(route('landing'));
     }
 
     /**
