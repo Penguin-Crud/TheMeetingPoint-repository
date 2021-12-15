@@ -20,4 +20,5 @@
         </div>
     </div>
 </div>
+{{-- Plantilla html de la card --}}
 @endsection
