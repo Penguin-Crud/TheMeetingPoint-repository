@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<x-instantCard :instant = "$events[0]"/>
+{{-- <x-slider :events = '$events'/> --}}
+<x-test/>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
