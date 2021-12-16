@@ -109,7 +109,19 @@
 
   @yield('main')
   @yield('content')
-  
+  @yield('EventCreate')
+
+  <footer class="text-muted py-5">
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="https://getbootstrap.com/docs/5.1/examples/album/#">Back to top</a>
+      </p>
+      <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
+      <p class="mb-0">New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+  </footer>
+
+  <script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
 
 </body>
 </html>

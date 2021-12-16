@@ -21,5 +21,5 @@
     </div>
 </div>
 {{-- Plantilla html de la card --}}
-<script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
+
 @endsection
