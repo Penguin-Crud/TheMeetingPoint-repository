@@ -6,9 +6,11 @@
     <div class="carousel-item active">
       <img src="{{$events[0]->image}}" class="d-block w-100" >
     </div>
+    @foreach ($events as $itemevent)
     <div class="carousel-item">
-      <img src="{{$events[1]->image}}" class="d-block w-100" >
+      <img src="{{$itemevent->image}}" class="d-block w-100" >
     </div>
+    @endforeach
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,6 +21,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+  
 
       <div class="album py-5 bg-light">
         <div class="container">
