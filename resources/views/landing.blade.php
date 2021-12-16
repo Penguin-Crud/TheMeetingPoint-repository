@@ -87,11 +87,11 @@
                   <p class="card-text">{{ $itemevent->title }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <form action="/events" method="POST">
+                      <form action="/events/{{ $itemevent->id }}" method="POST">
                         @csrf
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
                         @method('DELETE')
-                      </form>
-                      <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
+                      </form>          
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
                     <small class="text-muted">10 - I Like</small>
