@@ -108,6 +108,8 @@
   </header>
 
   @yield('main')
+  @yield('content')
+  
 
 </body>
 </html>
