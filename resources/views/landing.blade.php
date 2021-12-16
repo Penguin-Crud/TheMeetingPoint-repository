@@ -6,11 +6,11 @@
     <div class="carousel-item active">
       <img src="{{$events[0]->image}}" class="d-block w-100" >
     </div>
-    @foreach ($events as $itemevent)
-    <div class="carousel-item">
-      <img src="{{$itemevent->image}}" class="d-block w-100" >
-    </div>
-    @endforeach
+    @for ($i = 1; $i < count($events); $i++)
+      <div class="carousel-item">
+        <img src="{{$events[$i]->image}}" class="d-block w-100" >
+      </div>
+    @endfor
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
