@@ -24,4 +24,4 @@ Route::get('/events/create', [EventsController::class, 'create'])->name('events.
 Route::post('/events', [EventsController::class, 'store'])->name('events.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy');

@@ -89,8 +89,9 @@ class EventsController extends Controller
      * @param  \App\Models\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(events $events)
+    public function destroy($id)
     {
-        //
+        Events::destroy($id);
+        return back();
     }
 }
