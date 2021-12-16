@@ -22,3 +22,6 @@ Route::get('/', [EventsController::class, 'index'])->name('landing');
 
 Route::get('/events/create', [EventsController::class, 'create'])->name('events.create');
 Route::post('/events', [EventsController::class, 'store'])->name('events.store');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
