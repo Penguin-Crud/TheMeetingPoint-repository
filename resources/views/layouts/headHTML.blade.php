@@ -74,6 +74,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a href="{{ route('landing') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Landing</a>
                             <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">My events</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -107,6 +108,13 @@
     </div>
   </header>
 
+  @auth
+    <nav>
+      <a href="{{ route('events.create') }}">New Event</a>
+    </nav>
+  @endauth
+
+  @yield('login')
   @yield('main')
   @yield('content')
   @yield('EventCreate')

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\events;
 use App\Http\Requests\StoreeventsRequest;
 use App\Http\Requests\UpdateeventsRequest;
-use App\Models\Events as ModelsEvents;
+use App\Models\Events;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -43,6 +43,7 @@ class EventsController extends Controller
         $data = [
             'title' => $request->title,
             'image' => $request->image,
+            'user_id' =>Auth::user()->id,
         ];
 
         Events::create($data);
@@ -91,7 +92,14 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        Events::destroy($id);
+         // Events::destroy($id);
+
+        $eventToDelete = Events::findOrFail($id);
+
+        if (Auth::id() != $eventToDelete->author->id){return back();};
+
+        $eventToDelete->delete();
+      
         return back();
     }
 }

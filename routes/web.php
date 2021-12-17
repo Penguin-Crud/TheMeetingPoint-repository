@@ -23,5 +23,5 @@ Route::get('/', [EventsController::class, 'index'])->name('landing');
 Route::get('/events/create', [EventsController::class, 'create'])->name('events.create')->middleware('auth');
 Route::post('/events', [EventsController::class, 'store'])->name('events.store');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
