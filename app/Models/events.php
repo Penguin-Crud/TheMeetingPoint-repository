@@ -13,4 +13,8 @@ class Events extends Model
         'title',
         'image', 
     ];
+
+    public function Author(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

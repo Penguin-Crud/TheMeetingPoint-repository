@@ -5,6 +5,7 @@
       <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ $itemEvent->image }}" alt="No funciona">
       <div class="card-body">
         <p class="card-text">{{ $itemEvent->title }}</p>
+        <p class="card-text">{{ $itemEvent->author->name }}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             <form action="/events/{{ $itemEvent->id }}" method="POST">

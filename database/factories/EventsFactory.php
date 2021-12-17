@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EventsFactory extends Factory
@@ -16,6 +17,7 @@ class EventsFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'image' => $this->faker->imageUrl(),
+            'user_id' => User::all()->random(),
         ];
     }
 }
