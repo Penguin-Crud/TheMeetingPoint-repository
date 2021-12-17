@@ -1,4 +1,4 @@
-@props([‘events’])
+@props(['events'])
 <div id=“carouselExampleControls” class=“carousel slide” data-bs-ride=“carousel”>
   <div class=“carousel-inner”>
     <div class=“carousel-item active”>
