@@ -2,11 +2,11 @@
 <div id=“carouselExampleControls” class=“carousel slide” data-bs-ride=“carousel”>
   <div class=“carousel-inner”>
     <div class=“carousel-item active”>
-      <img src=“{{$events[0]->image}}” class=“d-block w-100” >
+      <img src="{{$events[0]->image}}" class="d-block w-100">
     </div>
     @for ($i = 1; $i < count($events); $i++)
       <div class=“carousel-item”>
-        <img src=“{{$events[$i]->image}}” class=“d-block w-100" >
+        <img src="{{$events[$i]->image}}" class="d-block w-100">
       </div>
     @endfor
   </div>
