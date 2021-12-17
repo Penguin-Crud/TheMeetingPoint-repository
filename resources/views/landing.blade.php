@@ -9,12 +9,7 @@
           @foreach ($events as $itemEvent)
             <x-eventCard :itemEvent='$itemEvent'/>
           @endforeach
-          
         </div>
       </div>
     </div>
-  </main>
-  
 @endsection
-
-
