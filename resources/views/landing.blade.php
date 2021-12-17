@@ -2,6 +2,9 @@
 
   
 @section('main')
+
+    
+
   <main>
     <div class="album py-5 bg-light">
       <div class="container">
