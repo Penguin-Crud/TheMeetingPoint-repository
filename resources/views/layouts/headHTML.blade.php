@@ -114,6 +114,7 @@
     </nav>
   @endauth
 
+  @yield('login')
   @yield('main')
   @yield('content')
   @yield('EventCreate')

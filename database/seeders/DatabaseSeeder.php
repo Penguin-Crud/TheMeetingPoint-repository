@@ -16,9 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
-        User::factory(['email' => 'admin@admin.com']);
+        User::factory([
+            'email' => 'admin@admin.com',
+            'name' => 'admin',
+        ])->create();
 
-        User::factory(10)->create();
+        User::factory(2)->create();
+
+        Events::factory()->create([
+            'title' => 'guayaquil',
+            'image' => 'https://pymstatic.com/85493/conversions/coach-guayaquil-default.jpg',
+            'user_id' => '1',
+        ]);
         Events::factory(10)->create();
     }
 }
