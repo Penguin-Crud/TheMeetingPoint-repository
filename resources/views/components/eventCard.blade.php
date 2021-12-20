@@ -15,9 +15,7 @@
             </form>          
             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
           </div>
-            <small class ="text muted">
-            <i class="fa fa-heart-o" aria-hidden="true" style = "color:red"></i>
-            </small>
+          <small class="text-muted">10 - I Like</small>
         </div>
       </div>
     </div>
