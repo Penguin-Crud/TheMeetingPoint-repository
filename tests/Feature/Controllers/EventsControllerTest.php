@@ -5,6 +5,9 @@ namespace Tests\Feature\Controllers;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Events;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EventsControllerTest extends TestCase
 {
@@ -14,10 +17,55 @@ class EventsControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_auth_user_isAuth()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+        
+        $this->actingAs($user)->assertTrue(Auth::user()->isAuthor($event));
     }
+
+    public function test_not_auth_user_cannot_edit_an_event_and_redirect_to_login()
+    {
+        User::factory()->create();
+        $event = Events::factory()->create();
+
+        $response = $this->get(route('events.edit', $event->id));
+        $response->assertStatus(302)->assertRedirect('/login');
+    }
+
+    public function test_auth_user_can_edit_their_own_event()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $response = $this->actingAs($user)->get(route('events.edit', $event->id));
+        $response->assertStatus(200)->assertViewIs('eventEdit');
+    }
+
+    public function test_auth_user_cannot_edit_others_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['user_id'=>2]);
+
+        $response = $this->actingAs($user)->get(route('events.edit', $event->id));
+        $response->assertStatus(500);
+    }
+
+    public function test_auth_user_can_update_their_own_event()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+        $data = [
+            'title' => 'updating',
+            'image' => 'http://hola.jpg'
+        ];
+        $response = $this->actingAs($user)->put(route('events.update', $event->id), $data);
+        $this->assertDatabaseHas('events',  [
+            'title' => 'updating',
+            'image' => 'http://hola.jpg'
+        ]);
+    }
+
+
 }
