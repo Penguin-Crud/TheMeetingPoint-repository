@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreeventsRequest;
 use App\Http\Requests\UpdateeventsRequest;
 use App\Models\Events;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,9 +68,11 @@ class EventsController extends Controller
      * @param  \App\Models\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function edit(events $events)
+    public function edit($id)
     {
-        //
+        $eventToEdit = Events::findOrFail($id);
+       
+        return view('eventEdit', ['event'=>$eventToEdit]);
     }
 
     /**
