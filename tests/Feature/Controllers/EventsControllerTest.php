@@ -61,6 +61,7 @@ class EventsControllerTest extends TestCase
             'image' => 'http://hola.jpg'
         ];
         $response = $this->actingAs($user)->put(route('events.update', $event->id), $data);
+        $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
             'title' => 'updating',
             'image' => 'http://hola.jpg'
