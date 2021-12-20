@@ -82,9 +82,18 @@ class EventsController extends Controller
      * @param  \App\Models\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateeventsRequest $request, events $events)
+    public function update($id, Request $request)
     {
-        //
+        $eventToUpdate = Events::findOrFail($id);
+        if (Auth::id() != $eventToUpdate->author->id){return back();};
+        $data = [
+            'title' => $request->title,
+            'image' => $request->image,
+            'user_id' =>Auth::user()->id,
+        ];
+        $eventToUpdate->update($data);
+
+        return redirect(route('landing'));
     }
 
     /**
