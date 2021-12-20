@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.88.1">
-  <title>Album example · Bootstrap v5.1</title>
+  <title>The Meeting Point</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
@@ -36,6 +36,15 @@
       -moz-user-select: none;
       user-select: none;
     }
+    .styleAncors {
+      color: black;
+      font-weight: bold;
+    }
+
+    .flex-anchors{
+      display: flex;
+      justify-content: space-between;
+    }
 
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
@@ -47,8 +56,8 @@
     
 </head>
 <body>
-  <header>
-    <div class="collapse bg-dark" id="navbarHeader">
+  <header style="background-color: #FFC700";>
+    <div class="collapse " id="navbarHeader">
       <div class="container">
         <div class="row">
           <div class="col-sm-4 offset-md-1 py-4">
@@ -58,33 +67,38 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link styleAncors"  href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link styleAncors" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                    <li class="nav-item dropdown flex-anchors">
+                      <div>
+                        <a href="{{ route('home') }}" class="styleAncors text-sm text-gray-700 dark:text-gray-500 underline">My events</a>
+                        <a href="{{ route('events.create') }}" class="styleAncors" >New Event</a>
+                      </div>
+                      <div>
+                        <a id="navbarDropdown" class="styleAncors nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              {{ Auth::user()->name }}
                         </a>
-
+  
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">My events</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                            <a class="styleAncors dropdown-item" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                             </a>
-
+  
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
+                      </div>
                     </li>
                 @endguest
             </ul>
@@ -94,12 +108,13 @@
         </div>
       </div>
     </div>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="navbar navbar-dark shadow-sm">
       <div class="container">
         <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
           <strong>Album</strong>
         </a>
+        <h1 style="color: black"><strong>The Meeting Point</strong></h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,7 +124,7 @@
 
   @auth
     <nav>
-      <a href="{{ route('events.create') }}">New Event</a>
+      
     </nav>
   @endauth
 
