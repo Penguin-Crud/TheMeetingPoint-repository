@@ -44,6 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean'
     ];
+
+    public function isAdmin(){
+        return $this->is_admin;
+    }
     public function isAuthor(Events $event){
         return $event->author->id === $this->id;
     }
