@@ -25,3 +25,7 @@ Route::post('/events', [EventsController::class, 'store'])->name('events.store')
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
+
+
+Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth');
+Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');

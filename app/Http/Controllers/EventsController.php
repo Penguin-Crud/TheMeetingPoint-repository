@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreeventsRequest;
 use App\Http\Requests\UpdateeventsRequest;
 use App\Models\Events;
+use App\Models\User;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,9 +69,11 @@ class EventsController extends Controller
      * @param  \App\Models\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function edit(events $events)
+    public function edit($id)
     {
-        //
+        $eventToEdit = Events::findOrFail($id);
+        if (!Auth::user()->isAuthor($eventToEdit)){return back();};
+        return view('eventEdit', ['event'=>$eventToEdit]);
     }
 
     /**
@@ -79,9 +83,17 @@ class EventsController extends Controller
      * @param  \App\Models\events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateeventsRequest $request, events $events)
+    public function update($id, Request $request)
     {
-        //
+        $eventToUpdate = Events::findOrFail($id);
+        $data = [
+            'title' => $request->title,
+            'image' => $request->image,
+            'user_id' =>Auth::user()->id,
+        ];
+        $eventToUpdate->update($data);
+
+        return redirect(route('landing'));
     }
 
     /**
