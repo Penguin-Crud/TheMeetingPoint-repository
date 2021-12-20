@@ -2,7 +2,7 @@
 
   
 @section('main')
-<x-slider :events='$events'/>
+{{--<x-slider :events='$events'/>--}}
 
     <div class="album py-5 bg-light">
       <div class="container">
