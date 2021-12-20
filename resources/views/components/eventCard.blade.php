@@ -12,8 +12,10 @@
               @csrf
               <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
               @method('DELETE')
-            </form>          
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </form>
+            <a href="{{route('events.edit', ['id' => $itemEvent->id])}}">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            </a>
           </div>
           <small class="text-muted">10 - I Like</small>
         </div>
