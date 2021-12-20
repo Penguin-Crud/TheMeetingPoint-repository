@@ -71,7 +71,7 @@ class EventsController extends Controller
     public function edit($id)
     {
         $eventToEdit = Events::findOrFail($id);
-       
+        if (Auth::id() != $eventToEdit->id){return back();};
         return view('eventEdit', ['event'=>$eventToEdit]);
     }
 
