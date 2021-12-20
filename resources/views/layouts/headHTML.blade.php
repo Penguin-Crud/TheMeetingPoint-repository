@@ -111,7 +111,7 @@
     <div class="navbar navbar-dark shadow-sm">
       <div class="container">
         <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
-        <img src="../../../img/logo.png" style="width: 60%"/>  
+        <img src="../../../img/logo.png" style="width: 70%"/>  
         </a>
         <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
