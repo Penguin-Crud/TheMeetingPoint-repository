@@ -17,7 +17,7 @@ class EventsControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_auth_user_isAuth()
+    public function test_auth_user_isAuth()//unit test
     {
         $user = User::factory()->create();
         $event = Events::factory()->create();
@@ -68,5 +68,28 @@ class EventsControllerTest extends TestCase
         ]);
     }
 
+    public function test_admin_is_by_defaul_false()//unit test
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+        
+        $this->assertDatabaseCount('users', 1);
+        $this->assertDatabaseHas('users',  [
+            'is_admin' => false,
+        ]);
+    }
+
+    public function test_can_make_admin()//unit test
+    {
+        $user = User::factory()->create([
+            'is_admin' => true,
+        ]);
+        $event = Events::factory()->create();
+        
+        $this->assertDatabaseCount('users', 1);
+        $this->assertDatabaseHas('users',  [
+            'is_admin' => true,
+        ]);
+    }
 
 }
