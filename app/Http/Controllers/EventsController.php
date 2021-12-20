@@ -86,7 +86,6 @@ class EventsController extends Controller
     public function update($id, Request $request)
     {
         $eventToUpdate = Events::findOrFail($id);
-        if (Auth::id() != $eventToUpdate->author->id){return back();};
         $data = [
             'title' => $request->title,
             'image' => $request->image,

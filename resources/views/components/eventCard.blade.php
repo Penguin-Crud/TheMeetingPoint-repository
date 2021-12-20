@@ -8,7 +8,7 @@
         <p class="card-text">{{ $itemEvent->name }}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <form action="/events/{{ $itemEvent->id }}" method="POST">
+            <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST">
               @csrf
               <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button> 
               @method('DELETE')
