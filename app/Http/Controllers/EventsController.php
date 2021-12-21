@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
 {
@@ -42,13 +43,27 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
+        $request->validate([
+            'image' => 'required|image|max:2048'
+        ]);
+
+        /*$data = [
             'title' => $request->title,
             'image' => $request->image,
             'user_id' =>Auth::user()->id,
         ];
 
         Events::create($data);
+        return redirect(route('landing'));*/
+        
+        $imagenes = $request->file('image')->store('public/imgUp');
+        $url = Storage::url($imagenes);
+        
+        Events::create([
+            'image' => $url,
+            'title' => $request->title,
+            'user_id' =>Auth::user()->id,
+        ]);
         return redirect(route('landing'));
     }
 

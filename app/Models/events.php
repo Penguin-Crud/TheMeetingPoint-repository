@@ -13,6 +13,7 @@ class Events extends Model
         'title',
         'image', 
         'user_id',
+        'url',
     ];
 
     public function Author(){
