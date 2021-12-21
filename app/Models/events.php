@@ -11,12 +11,14 @@ class Events extends Model
 
     protected $fillable = [
         'title',
-        'image', 
+        'image',
         'user_id',
         'url',
     ];
 
-    public function Author(){
+    public function Author()
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
+   
 }
