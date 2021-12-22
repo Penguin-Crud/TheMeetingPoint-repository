@@ -14,9 +14,13 @@ class Events extends Model
         'image', 
         'user_id',
         'url',
+        'showSlider',
     ];
 
     public function Author(){
         return $this->belongsTo(User::class, 'user_id');
     }
+    protected $casts = [
+        'showSlider' => 'boolean',
+    ];
 }

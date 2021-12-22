@@ -1,10 +1,12 @@
 @props(['events'])
 <div id="carouselExampleControls" style="padding:5% 13%" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{$events[0]->image}}" class="d-block w-100">
-    </div>
-
+    @if (!empty($events))
+      <div class="carousel-item active">
+        <img src="{{$events[0]->image}}" class="d-block w-100">
+      </div>
+    @endif
+    
     @for ($i = 1; $i < count($events); $i++)
     <div class="carousel-item">
       <img src="{{$events[$i]->image}}" class="d-block w-100">

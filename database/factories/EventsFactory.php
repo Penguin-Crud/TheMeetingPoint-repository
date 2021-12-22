@@ -18,6 +18,7 @@ class EventsFactory extends Factory
             'title' => $this->faker->company(),
             'image' => $this->faker->imageUrl(),
             'user_id' => User::all()->random(),
+            'showSlider' => false,
         ];
     }
 }
