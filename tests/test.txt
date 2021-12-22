@@ -1,7 +1,8 @@
 Comandos:
 
 php artisan serve
-
+php artisan make:test 'carpeta'/'nombre del test'
+php artisan --filter
 
 
 
