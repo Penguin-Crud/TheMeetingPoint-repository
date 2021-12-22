@@ -24,20 +24,20 @@ class UserTest extends TestCase
         
         $this->assertDatabaseCount('users', 1);
         $this->assertDatabaseHas('users',  [
-            'is_admin' => false,
+            'isAdmin' => false,
         ]);
     }
 
     public function test_can_make_admin()//unit test
     {
         $user = User::factory()->create([
-            'is_admin' => true,
+            'isAdmin' => true,
         ]);
         $event = Events::factory()->create();
         
         $this->assertDatabaseCount('users', 1);
         $this->assertDatabaseHas('users',  [
-            'is_admin' => true,
+            'isAdmin' => true,
         ]);
     }
 

@@ -87,7 +87,7 @@ class EventsController extends Controller
     public function edit($id)
     {
         $eventToEdit = Events::findOrFail($id);
-        if (! Auth::user()->isAdmin()){
+        if (! Auth::user()->isAdmin){
             return back();
         };
         return view('eventEdit', ['event'=>$eventToEdit]);
@@ -124,7 +124,7 @@ class EventsController extends Controller
          // Events::destroy($id);
 
         $eventToDelete = Events::findOrFail($id);
-        //Auth::user()->isAdmin()
+        //Auth::user()->isAdmin
         if (Auth::id() != $eventToDelete->author->id){return back();};
 
         $eventToDelete->delete();
