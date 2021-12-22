@@ -15,3 +15,10 @@ Codigos de estado de respuesta HTTP:
 300-399(redirecciones)
 400-499(errores de clientes)
 500-599(errores de los servidores)
+
+
+
+Cuando se utilizan factorias dentro del test:
+
+$this->withoutExceptionHandling();
+use RefreshDataBase
