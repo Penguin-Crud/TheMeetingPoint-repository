@@ -22,3 +22,6 @@ Cuando se utilizan factorias dentro del test:
 
 $this->withoutExceptionHandling();
 use RefreshDataBase
+
+
+video 16/12 min 52:37
