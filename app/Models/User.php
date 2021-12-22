@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     public function isAdmin(){
-        return $this->is_admin;
+        return $this->isAdmin;
     }
     public function isAuthor(Events $event){
         return $event->author->id === $this->id;

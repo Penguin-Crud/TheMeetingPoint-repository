@@ -39,7 +39,7 @@ class EventsControllerTest extends TestCase
 
     public function test_admin_can_edit()
     {
-        $admin = User::factory()->create(['is_admin'=>true]);
+        $admin = User::factory()->create(['isAdmin'=>true]);
         $event = Events::factory()->create();
 
         $response = $this->actingAs($admin)->get(route('events.edit', $event->id));
@@ -48,7 +48,7 @@ class EventsControllerTest extends TestCase
 
     public function test_admin_can_update()
     {
-        $admin = User::factory()->create(['is_admin'=>true]);
+        $admin = User::factory()->create(['isAdmin'=>true]);
         $event = Events::factory()->create();
         $data = [
             'title' => 'updating',
