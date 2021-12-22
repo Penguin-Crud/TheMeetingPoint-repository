@@ -13,7 +13,8 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
-  
+  <!--font awesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <!-- Bootstrap core CSS -->
   <link href="{{asset('events-css/bootstrap.min.css')}}" rel="stylesheet">

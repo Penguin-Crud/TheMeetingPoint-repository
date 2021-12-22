@@ -39,9 +39,9 @@
             <input name='date' type="text" class="form-control" id="date" >
           </div>
           <div class="form-group d-flex flex-row align-items-center">
-            <label for="people" class="me-3 text-white">Time:  </label>
-            <input name='people' type="text" class="form-control" id="people" >
-          </div> --}}
+            <label for="people" class="me-3">Time:  </label>
+            <input name='time' type="text" class="form-control" id="people" >
+          </div>
           <div class="d-flex justify-content-center mt-4">
             <button type="submit" class="btn btn-primary ">Submit</button>
           </div>
