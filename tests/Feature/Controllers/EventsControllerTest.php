@@ -17,13 +17,6 @@ class EventsControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_auth_user_isAuth()//unit test
-    {
-        $user = User::factory()->create();
-        $event = Events::factory()->create();
-        
-        $this->actingAs($user)->assertTrue(Auth::user()->isAuthor($event));
-    }
 
     public function test_not_auth_user_cannot_edit_an_event_and_redirect_to_login()
     {
