@@ -36,35 +36,25 @@ class EventsControllerTest extends TestCase
         $response = $this->get(route('events.edit', $event->id));
         $response->assertStatus(302);
     }
-    
 
-    public function test_auth_user_can_edit_their_own_event()
+    public function test_admin_can_edit()
     {
-        $user = User::factory()->create();
+        $admin = User::factory()->create(['is_admin'=>true]);
         $event = Events::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('events.edit', $event->id));
+        $response = $this->actingAs($admin)->get(route('events.edit', $event->id));
         $response->assertStatus(200)->assertViewIs('eventEdit');
     }
 
-    public function test_auth_user_cannot_edit_others_events()
+    public function test_admin_can_update()
     {
-        $user = User::factory()->create();
-        $event = Events::factory()->create(['user_id'=>2]);
-
-        $response = $this->actingAs($user)->get(route('events.edit', $event->id));
-        $response->assertStatus(500);
-    }
-
-    public function test_auth_user_can_update_their_own_event()
-    {
-        $user = User::factory()->create();
+        $admin = User::factory()->create(['is_admin'=>true]);
         $event = Events::factory()->create();
         $data = [
             'title' => 'updating',
             'image' => 'http://hola.jpg'
         ];
-        $response = $this->actingAs($user)->put(route('events.update', $event->id), $data);
+        $response = $this->actingAs($admin)->put(route('events.update', $event->id), $data);
         $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
             'title' => 'updating',
