@@ -18,6 +18,7 @@ class EventsControllerTest extends TestCase
      * @return void
      */
 
+     //UPDATE
     public function test_not_auth_user_cannot_edit_an_event_and_redirect_to_login()
     {
         User::factory()->create();
@@ -26,6 +27,16 @@ class EventsControllerTest extends TestCase
         $response = $this->get(route('events.edit', $event->id));
         $response->assertStatus(302)->assertRedirect('/login');
     }
+
+    public function test_auth_user_cannot_edit_an_event()
+    {
+        User::factory()->create();
+        $event = Events::factory()->create();
+
+        $response = $this->get(route('events.edit', $event->id));
+        $response->assertStatus(302);
+    }
+    
 
     public function test_auth_user_can_edit_their_own_event()
     {
