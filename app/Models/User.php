@@ -22,7 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'is_admin'
     ];
 
     /**
@@ -42,15 +41,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean'
     ];
 
-    public function isAdmin(){
-        return $this->is_admin;
-    }
-    public function isAuthor(Events $event){
-        return $event->author->id === $this->id;
-    }
     public function events() {
         return $this->hasMany(Event::class);
     }
