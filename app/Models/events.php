@@ -16,6 +16,8 @@ class Events extends Model
         'url',
         'date',
         'time',
+        'description',
+        'people',
     ];
 
     public function Author()
