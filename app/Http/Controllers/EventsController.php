@@ -107,9 +107,16 @@ class EventsController extends Controller
     public function update($id, Request $request)
     {
         $eventToUpdate = Events::findOrFail($id);
+
+        $request->validate([
+            'image' => 'required|image|max:2048'
+        ]);
+        $imagenes = $request->file('image')->store('public/imgUp');
+        $url = Storage::url($imagenes);
+
         $data = [
             'title' => $request->title,
-            'image' => $request->image,
+            'image' => $url,
             'user_id' =>Auth::user()->id,
         ];
         $eventToUpdate->update($data);
