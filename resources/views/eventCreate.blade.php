@@ -41,7 +41,7 @@
           <div class="form-group d-flex flex-row align-items-center">
             <label for="people" class="me-3">Time:  </label>
             <input name='time' type="text" class="form-control" id="people" >
-          </div>
+          </div>--}}
           <div class="d-flex justify-content-center mt-4">
             <button type="submit" class="btn btn-primary ">Submit</button>
           </div>
