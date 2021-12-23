@@ -20,6 +20,11 @@ class Events extends Model
     public function Author(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function eventsForSlider(){
+        return Events::where('showSlider', true)->get();
+    }
+
     protected $casts = [
         'showSlider' => 'boolean',
     ];
