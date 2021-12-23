@@ -62,7 +62,11 @@ class EventsController extends Controller
         Events::create([
             'image' => $url,
             'title' => $request->title,
+            'description' => $request->description,
+            'people' => $request->people,
             'user_id' =>Auth::user()->id,
+            'date' => $request->date,
+            'time' => $request->time,
         ]);
         return redirect(route('landing'));
     }

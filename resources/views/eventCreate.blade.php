@@ -24,7 +24,7 @@
             <label for="title" class="me-3 text-white">Title:  </label>
             <input name='title' type="text" class="form-control" id="title" >
           </div>
-            {{--<div class="form-group d-flex flex-row align-items-center mb-5">
+            <div class="form-group d-flex flex-row align-items-center mb-5">
             <label for="description" class="me-3 text-right  text-white">Description:  </label>
             <input name='description' type="text" class="form-control" id="description" >
           </div>
@@ -48,7 +48,7 @@
         </form>
       </div>
     </div>
-        
+      
     @endsection
 
 
