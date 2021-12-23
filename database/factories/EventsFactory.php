@@ -17,8 +17,8 @@ class EventsFactory extends Factory
         return [
             'title' => $this->faker->company(),
             'image' => $this->faker->imageUrl(),
-            'description' => $this->faker->paragraph(),
-            'people' => $this->faker->numberBetween(0, 100),
+            'description' => $this->faker->company(),
+            'people' => $this->faker->numberBetween(0,10),
             'date' => $this->faker->date('Y_m_d'),
             'time' => $this->faker->time(),
             'user_id' => User::all()->random(),
