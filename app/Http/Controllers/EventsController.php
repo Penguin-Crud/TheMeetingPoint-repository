@@ -63,6 +63,8 @@ class EventsController extends Controller
             'image' => $url,
             'title' => $request->title,
             'user_id' =>Auth::user()->id,
+            'date' => "2021/10/10",
+            'time' => "12:18",
         ]);
         return redirect(route('landing'));
     }

@@ -17,8 +17,8 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image', 250);
-            $table->string('description');
-            $table->integer('people');
+            //$table->string('description', 500)->default(null);
+            //$table->integer('people')->default(null);
             $table->date('date');
             $table->time('time');
             $table->foreignId('user_id')->nullable()->default(null);
