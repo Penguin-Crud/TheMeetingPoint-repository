@@ -82,5 +82,22 @@ class EventsControllerTest extends TestCase
             'image' => 'http://hola.jpg'
         ]);
     }
+    
+    
+    //DELETE
+    public function test_not_auth_user_cannot_delete_an_event()
+    {
+        User::factory()->create();
+        $event = Events::factory()->create();
+
+       $this->delete(route('events.destroy', $event->id));
+
+       $this->assertDatabaseCount('events',1);
+    }
+
+
+
+
+
 
 }
