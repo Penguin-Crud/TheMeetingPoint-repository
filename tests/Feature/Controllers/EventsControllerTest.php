@@ -29,6 +29,14 @@ class EventsControllerTest extends TestCase
         $response->assertStatus(200)
         ->assertViewIs('eventCreate');
     }
+    public function test_user_can_not_see_an_event_create_form_view()
+    {
+        $response = $this-> get(route('events.create'));
+
+        $response->assertStatus(302)
+        ->assertRedirect('/login'); 
+        
+    }
 
 
     //UPDATE
