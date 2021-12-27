@@ -12,13 +12,13 @@
           </div>
         </div>
         <p class="card-text">{{ $itemEvent->description }}</p>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-between">
+          <button class="bg-warning text-white">Allow</button>
           <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
         </div>
 
         <div class="d-flex justify-content-center align-items-center flex-column">
 
-          <button class="bg-warning text-white">Allow</button>
 
           <div class="btn-group mt-2">
             <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST" class="me-1" style="width: 6vw">
