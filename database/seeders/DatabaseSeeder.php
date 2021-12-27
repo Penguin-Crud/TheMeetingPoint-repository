@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'guayaquil',
             'image' => 'https://pymstatic.com/85493/conversions/coach-guayaquil-default.jpg',
             'user_id' => '1',
+            'description' => 'Lorem Ipsum facty como que n tee juhy jauen fpaiaif e napamte lemfasmee e fajef  najdjw wkajwu wmd.',
         ]);
         Events::factory(10)->create();
     }
