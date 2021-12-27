@@ -39,7 +39,7 @@ class LandingControllerTest extends TestCase
 
         $response = $this->get(route('landing'));
 
-        $response->assertSee($event[1]->title);
+        $response->assertDontSee($event[1]->title);
     }
 
     public function test_can_not_see_an_authors_name_in_nav_of_the_landing_page()
