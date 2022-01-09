@@ -54,6 +54,7 @@
     }
   </style>
 
+  @livewireStyles
     
 </head>
 <body style="background-color: black">
@@ -133,7 +134,7 @@
   @yield('main')
   @yield('content')
   @yield('EventCreate')
-
+  
   {{-- <footer class="text-muted py-5">
     <div class="container">
       <p class="float-end mb-1">
@@ -145,6 +146,7 @@
   </footer> --}}
 
   <script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
-
+  @livewireScripts
+  
 </body>
 </html>
