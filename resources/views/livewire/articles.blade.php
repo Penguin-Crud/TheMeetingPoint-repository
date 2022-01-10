@@ -10,14 +10,24 @@
             <div class="d-flex justify-content-between">
               <p class="card-text" style="font-weight:bold">{{  $title  }}</p>
               <div class="d-flex justify-content-between">
-                <p class="card-text">{{  $date  }}</p>
-                <p class="card-text ms-2">{{  $time  }}</p>
+                @php
+                  $expdate=2022-12-12;
+                  if ($date>$expdate) {$color='text-danger';}
+                  if ($date<$expdate) {$color='text-dark';}
+                @endphp
+                <p class="card-text {{$color}}">{{  $date  }}</p>
+                <p class="card-text ms-2{{$color}}">{{  $time  }}</p>
               </div>
             </div>
             <p class="card-text">{{  $description }}</p>
             <div class="d-flex justify-content-between">
               <button class="bg-warning text-white">Allow</button>
-              <p class="card-text">Persons : 0 / {{  $people  }}</p>
+              @php
+                  $maxpeople=23;
+                  if ($people>$maxpeople) {$color='text-danger';}
+                  if ($people<$maxpeople) {$color='text-dark';}
+              @endphp
+              <p class="card-text" >persons : {{$maxpeople}} / <p class="{{$color}}">{{  $people  }}</p></p>
             </div>
     
             <div class="d-flex justify-content-center align-items-center flex-column">
@@ -69,7 +79,7 @@
 
 
         <div class="form-group d-flex flex-row align-items-center">
-          <label for="people" class="me-3 text-white">MaxPeople:  </label>
+          <label for="people" class="me-3 text-primary">MaxPeople:  </label>
           <input wire:model="people" name='people' type="text" class="form-control" id="people" >
         </div>
         <div class="form-group d-flex flex-row align-items-center">
