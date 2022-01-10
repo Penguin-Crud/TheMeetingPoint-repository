@@ -107,20 +107,27 @@ class EventsController extends Controller
     public function update($id, Request $request)
     {
         $eventToUpdate = Events::findOrFail($id);
+        if(!$request->image){
+            $data = [
+                'title' => $request->title,
+                'user_id' =>Auth::user()->id,
+                ];
+            $eventToUpdate->update($data);
+            return redirect(route('landing'));
+        }
 
         $request->validate([
             'image' => 'required|image|max:2048'
         ]);
+
         $imagenes = $request->file('image')->store('public/imgUp');
         $url = Storage::url($imagenes);
-
         $data = [
             'title' => $request->title,
             'image' => $url,
             'user_id' =>Auth::user()->id,
         ];
         $eventToUpdate->update($data);
-
         return redirect(route('landing'));
     }
 
