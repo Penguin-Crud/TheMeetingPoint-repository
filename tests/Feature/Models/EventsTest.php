@@ -57,7 +57,7 @@ class EventsTest extends TestCase
         ]);
     }
 
-    public function test_can_get_all_highlitedEvents(Type $var = null)
+    public function test_can_get_all_highlitedEvents()
     {
         $user = User::factory()->create();
         $events = Events::factory(3)->create();

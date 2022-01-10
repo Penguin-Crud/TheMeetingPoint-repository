@@ -3,7 +3,7 @@
   
 @section('main')
     <div>
-     <x-slider :events='$events'/>
+     <x-slider :events='$highlightedEvents'/>
     </div>
     <div style="width:100%">
       <h2 style="color:white ;font-size: 3em; display:flex; justify-content: center">Events</h2>
