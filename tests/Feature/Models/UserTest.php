@@ -41,4 +41,15 @@ class UserTest extends TestCase
         ]);
     }
 
+    public function test_user_is_admin()
+    {
+        $user = User::factory()->create([
+            'isAdmin' => true,
+        ]);
+
+        $response = $user->isAdmin();
+
+        $this->assertTrue($response);
+    }
+
 }
