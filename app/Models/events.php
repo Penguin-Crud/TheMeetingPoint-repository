@@ -27,8 +27,8 @@ class Events extends Model
         $this->save();
     }
 
-    public function eventsForSlider(){
-        return Events::where('showSlider', true)->get();
+    public static function highlightedEvents(){
+        return self::where('showSlider', true)->get();
     }
 
 }

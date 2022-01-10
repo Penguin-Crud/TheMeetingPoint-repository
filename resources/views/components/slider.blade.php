@@ -9,7 +9,7 @@
     
     @for ($i = 1; $i < count($events); $i++)
     <div class="carousel-item">
-      <img src="{{$events[$i]->image}}" class="d-block w-100" alt="Highlighted event {{$events[0]->title}}>
+      <img src="{{$events[$i]->image}}" class="d-block w-100" alt="Highlighted event {{$events[$i]->title}}">
     </div>
     @endfor
 

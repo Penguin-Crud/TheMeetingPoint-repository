@@ -57,4 +57,14 @@ class EventsTest extends TestCase
         ]);
     }
 
+    public function test_can_get_all_highlitedEvents(Type $var = null)
+    {
+        $user = User::factory()->create();
+        $events = Events::factory(3)->create();
+        $events[0]->toggleHighlight();
+        $events[1]->toggleHighlight();
+        $highlightedEvents = Events::highlightedEvents();
+        $this->assertCount(2, $highlightedEvents);
+    }
+
 }
