@@ -19,7 +19,7 @@
 
         <div class="d-flex justify-content-center align-items-center flex-column">
 
-
+          
           <div class="btn-group mt-2">
             <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST" class="me-1" style="width: 6vw">
               @csrf
