@@ -21,11 +21,14 @@ class Events extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function toggleHighlight()
+    {
+        $this->showSlider = !$this->showSlider;
+        $this->save();
+    }
+
     public function eventsForSlider(){
         return Events::where('showSlider', true)->get();
     }
 
-    protected $casts = [
-        'showSlider' => 'boolean',
-    ];
 }

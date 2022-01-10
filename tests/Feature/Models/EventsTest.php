@@ -16,6 +16,8 @@ class EventsTest extends TestCase
      *
      * @return void
      */
+
+     //SHOW SLIDER
     public function test_an_event_by_default_is_not_hightlited()
     {   
         $user = User::factory()->create();
@@ -31,12 +33,27 @@ class EventsTest extends TestCase
     public function test_an_event_by_can_be_hightlited()
     {   
         $user = User::factory()->create();
-        $event = Events::factory()->create(['showSlider' => true]);
+        $event = Events::factory()->create();
+        $event->toggleHighlight();
         
         $this->assertTrue($event->showSlider);
         $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
             'showSlider' => true,
+        ]);
+    }
+
+    public function test_an_event_by_can_be_dehightlited()
+    {   
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+        $event->toggleHighlight();
+        $event->toggleHighlight();
+        
+        $this->assertFalse($event->showSlider);
+        $this->assertDatabaseCount('events', 1);
+        $this->assertDatabaseHas('events',  [
+            'showSlider' => false,
         ]);
     }
 
