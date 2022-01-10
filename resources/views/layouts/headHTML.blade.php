@@ -82,7 +82,13 @@
                     <li class="nav-item dropdown flex-anchors">
                       <div>
                         <a href="{{ route('home') }}" class="styleAncors text-sm text-gray-700 dark:text-gray-500 underline">My events</a>
-                        <a href="{{ route('events.create') }}" class="styleAncors" >New Event</a>
+                        @auth
+              
+                        @if (Auth::user()->isAdmin())
+                          <a href="{{ route('events.create') }}" class="styleAncors" >New Event</a>
+                        @endif
+                        
+                        @endauth
                       </div>
                       <div>
                         <a id="navbarDropdown" class="styleAncors nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

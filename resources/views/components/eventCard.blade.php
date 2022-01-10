@@ -18,7 +18,9 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center flex-column">
-
+          @auth
+              
+          @if (Auth::user()->isAdmin())
           
           <div class="btn-group mt-2">
             <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST" class="me-1" style="width: 6vw">
@@ -26,12 +28,14 @@
               <button type="submit" class="btn btn-sm btn-outline-secondary text-white bg-danger w-100">Delete</button> 
               @method('DELETE')
             </form>
-
+            
             <a href="{{route('events.edit', ['id' => $itemEvent->id])}}" class="ms-1" style="width: 6vw">
               <button type="button" class="btn btn-sm btn-outline-secondary text-white w-100" style="background-color: blue">Edit</button>
             </a>
           </div>
           
+          @endif
+          @endauth
         </div>
 
       </div>
