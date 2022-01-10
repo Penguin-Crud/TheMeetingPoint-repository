@@ -55,4 +55,8 @@ class User extends Authenticatable
         if ($this->loves()->find($eventid)) return true;
         return false;
     }
+    public function isAdmin()
+    {
+        if ($this->isAdmin) return true;
+    }
 }
