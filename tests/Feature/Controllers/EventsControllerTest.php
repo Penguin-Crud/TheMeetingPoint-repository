@@ -18,7 +18,28 @@ class EventsControllerTest extends TestCase
      * @return void
      */
 
-     //UPDATE
+    //CREATE
+    public function test_auth_user_can_see_an_event_create_form()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)
+            ->get(route('events.create'));
+
+        $response->assertStatus(200)
+        ->assertViewIs('eventCreate');
+    }
+    public function test_user_can_not_see_an_event_create_form_view()
+    {
+        $response = $this-> get(route('events.create'));
+
+        $response->assertStatus(302)
+        ->assertRedirect('/login'); 
+        
+    }
+
+
+    //UPDATE
     public function test_not_auth_user_cannot_edit_an_event_and_redirect_to_login()
     {
         User::factory()->create();
@@ -61,5 +82,22 @@ class EventsControllerTest extends TestCase
             'image' => 'http://hola.jpg'
         ]);
     }
+    
+    
+    //DELETE
+    public function test_not_auth_user_cannot_delete_an_event()
+    {
+        User::factory()->create();
+        $event = Events::factory()->create();
+
+       $this->delete(route('events.destroy', $event->id));
+
+       $this->assertDatabaseCount('events',1);
+    }
+
+
+
+
+
 
 }

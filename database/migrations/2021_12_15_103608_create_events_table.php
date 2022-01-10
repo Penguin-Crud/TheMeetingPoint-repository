@@ -15,11 +15,17 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->boolean('showSlider')->default(false);
-            $table->string('image', 250);
             $table->foreignId('user_id')->nullable()->default(null);
             $table->timestamps();
+            
+            $table->string('title');
+            $table->string('image', 250);
+            $table->string('description');
+            $table->integer('people');
+            $table->date('date');
+            $table->time('time');
+            
         });
     }
 
