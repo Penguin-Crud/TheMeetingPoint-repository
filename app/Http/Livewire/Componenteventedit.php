@@ -6,21 +6,33 @@ use App\Models\Events;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Componenteventedit extends Component
 {
-    public $eventToEdit = 'ADios';
     public $event;
+    public $title;
+    public $url;
+    use WithFileUploads;
+    public $image;
     
-    // public function edit($id)
-    // {
-    //     $this->eventToEdit = Events::findOrFail($id);
-    //     if (! Auth::user()->isAdmin){
-    //         return back();
-    //     };
+    public function mount()
+    {
+        $this->title = $this->event->title;
+        $this->image = $this->url;
+    }
+    public function photoPreview()
+    {
+        $this->validate([
+            'image' => 'image|max:2048',
+        ]);
+        $imagenes = $this->image->file('image')->store('public/imgUp');
+        $this->url = Storage::url($imagenes);
+    }
+    public function image()
+    {
         
-    //     //return view('componentEventEdit', ['event'=>$eventToEdit]); 
-    // }
+    }
     
     // public function render()
     // {
@@ -33,15 +45,6 @@ class Componenteventedit extends Component
     // public $date;
     // public $time;
 
-    // use WithFileUploads;
-    // public $image;
-
-    // public function photoPreview()
-    // {
-    //     $this->validate([
-    //         'image' => 'image|max:2048',
-    //     ]);
-    // }
 
 
 
