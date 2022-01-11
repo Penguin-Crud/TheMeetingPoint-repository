@@ -36,8 +36,28 @@ class Events extends Model
         return self::where('showSlider', true)->get();
     }
     
-    public function students()
+    private function students()
     {
         return $this->belongsToMany(User::class, 'students')->withTimestamps();
     }
+
+    public function addStudent($userId)
+    {
+        $user = User::find($userId);
+        $this->students()->attach($user);
+    }
+
+    public function removeStudent($userId)
+    {
+        $user = User::find($userId);
+        $this->students()->detach($user);
+    }
+    
+    public function countStudent()
+    {
+        $this->students()->count();
+    }
+
+
+
 }
