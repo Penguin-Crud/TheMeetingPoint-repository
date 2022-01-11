@@ -46,15 +46,6 @@ class EventsController extends Controller
         $request->validate([
             'image' => 'required|image|max:2048'
         ]);
-
-        /*$data = [
-            'title' => $request->title,
-            'image' => $request->image,
-            'user_id' =>Auth::user()->id,
-        ];
-
-        Events::create($data);
-        return redirect(route('landing'));*/
         
         $imagenes = $request->file('image')->store('public/imgUp');
         $url = Storage::url($imagenes);
@@ -91,6 +82,7 @@ class EventsController extends Controller
     public function edit($id)
     {
         $eventToEdit = Events::findOrFail($id);
+        
         if (! Auth::user()->isAdmin){
             return back();
         };
@@ -117,7 +109,7 @@ class EventsController extends Controller
         }
 
         $request->validate([
-            'image' => 'image|max:2048'
+            'image' => 'required|image|max:2048'
         ]);
 
         $imagenes = $request->file('image')->store('public/imgUp');

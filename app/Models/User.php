@@ -43,9 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
     public function events() {
         return $this->hasMany(Event::class);
     }
+
+    
     public function loves()
     {
         return $this->belongsToMany(Event::class, 'loves');
@@ -55,6 +59,8 @@ class User extends Authenticatable
         if ($this->loves()->find($eventid)) return true;
         return false;
     }
+
+
     public function isAdmin()
     {
         if ($this->isAdmin) return true;

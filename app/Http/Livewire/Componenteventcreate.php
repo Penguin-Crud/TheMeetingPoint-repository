@@ -19,7 +19,7 @@ class Componenteventcreate extends Component
     public function photoPreview()
     {
         $this->validate([
-            'image' => 'image|max:1024',
+            'image' => 'image|max:2048',
         ]);
     }
 

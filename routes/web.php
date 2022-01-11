@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\Componenteventedit;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,7 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('event
 
 
 Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth');
+// Route::get('/edit/{id}', [Componenteventedit::class, 'edit'])->name('events.edit')->middleware('auth');
+
+
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
