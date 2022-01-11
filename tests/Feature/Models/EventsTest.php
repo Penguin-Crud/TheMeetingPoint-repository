@@ -84,4 +84,14 @@ class EventsTest extends TestCase
         $event->addStudent($user->id);
         $this->assertEquals(1, $event->countStudents());
     }
+
+    public function test_students_can_unjoin_in_an_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $event->addStudent($user->id);
+        $event->removeStudent($user->id);
+        $this->assertEquals(0, $event->countStudents());
+    }
 }
