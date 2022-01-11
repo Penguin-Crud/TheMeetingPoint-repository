@@ -67,4 +67,12 @@ class EventsTest extends TestCase
         $this->assertCount(2, $highlightedEvents);
     }
 
+    public function test_count_students_joined_in_an_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $event->students()->attach($user);
+        $this->assertDatabaseCount('students',1);
+    }
 }
