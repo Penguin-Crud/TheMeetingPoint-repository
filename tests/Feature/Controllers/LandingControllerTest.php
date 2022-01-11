@@ -17,18 +17,18 @@ class LandingControllerTest extends TestCase
      *
      * @return void
      */
-/*
-    public function test_into_the_route_landing_page()
-    {
-        User::factory()->create();
-        Events::factory(3)->create();
 
-        $response = $this->get(route('landing'));
+    // public function test_into_the_route_landing_page()
+    // {
+    //     $user = User::factory()->create();
+    //     Events::factory(3)->create();
 
-        $response->assertStatus(200)
-        ->assertViewIs('landing');
-    }
-*/
+    //     $response = $this->actingAs($user)->get(route('landing'));
+
+    //     $response->assertStatus(200)
+    //     ->assertViewIs('landing');
+    // }
+
     public function test_can_see_an_all_users_events_list()
     {
 

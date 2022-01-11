@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Articles extends Component
+class Componenteventcreate extends Component
 {
     public $title;
     public $description;
