@@ -47,6 +47,22 @@
       justify-content: space-between;
     }
 
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+
+    .carousel-item {
+      height: 65vh;
+      min-height: 300px;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;

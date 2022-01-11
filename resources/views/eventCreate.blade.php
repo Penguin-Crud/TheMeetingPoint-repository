@@ -3,5 +3,3 @@
   @section('EventCreate')
     @livewire('componenteventcreate')
   @endsection
-
-

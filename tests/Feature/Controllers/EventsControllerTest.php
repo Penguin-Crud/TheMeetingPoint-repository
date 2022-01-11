@@ -106,32 +106,28 @@ class EventsControllerTest extends TestCase
         $response->assertSee('Delete');
         $response->assertSee('Edit');
     }
-/*
-    public function test_user_dont_view_btns_of_crud()
-    {
-        $user = User::factory()->create();
-        Events::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('landing'));
+    // public function test_user_dont_view_btns_of_crud()
+    // {
+    //     $user = User::factory()->create();
+    //     Events::factory()->create();
 
-        $response->assertDontSee('Delete');
-        $response->assertDontSee('Edit');
-    }
+    //     $response = $this->actingAs($user)->get(route('landing'));
 
-    public function test_user_guest_dont_view_btns_of_crud()
-    {
-        $user = User::factory()->create();
-        $event = Events::factory()->create();
+    //     $response->assertDontSee('events.destroy');
+    //     $response->assertDontSee('events.edit');
+    // }
 
-        $response = $this->get(route('landing'));
+    // public function test_user_guest_dont_view_btns_of_crud()
+    // {
+    //     $user = User::factory()->create();
+    //     $event = Events::factory()->create();
+
+    //     $response = $this->get(route('landing'));
 
 
-        $response->assertDontSee('Delete');
-        $response->assertDontSee('Edit');
-    }
+    //     $response->assertDontSee('Delete');
+    //     $response->assertDontSee('Edit');
+    // }
 
-        $response->assertDontSee('Delete');
-        $response->assertDontSee('Edit');
-    }
-*/
 }
