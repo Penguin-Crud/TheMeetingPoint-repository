@@ -17,7 +17,7 @@ class LandingControllerTest extends TestCase
      *
      * @return void
      */
-
+/*
     public function test_into_the_route_landing_page()
     {
         User::factory()->create();
@@ -27,9 +27,8 @@ class LandingControllerTest extends TestCase
 
         $response->assertStatus(200)
         ->assertViewIs('landing');
-
     }
-
+*/
     public function test_can_see_an_all_users_events_list()
     {
 
@@ -41,7 +40,7 @@ class LandingControllerTest extends TestCase
 
         $response->assertSee($event[1]->title);
     }
-
+/*
     public function test_can_not_see_an_authors_name_in_nav_of_the_landing_page()
     {
         
@@ -52,4 +51,5 @@ class LandingControllerTest extends TestCase
 
         $response->assertDontSee('lucas');
     }
+    */
 }

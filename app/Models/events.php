@@ -14,6 +14,7 @@ class Events extends Model
         'image',
         'user_id',
         'url',
+        'showSlider',
         'date',
         'time',
         'description',
@@ -24,5 +25,14 @@ class Events extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-   
+
+    public function toggleHighlight()
+    {
+        $this->showSlider = !$this->showSlider;
+        $this->save();
+    }
+
+    public static function highlightedEvents(){
+        return self::where('showSlider', true)->get();
+    }   
 }
