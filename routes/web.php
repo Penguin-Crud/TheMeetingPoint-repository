@@ -28,4 +28,4 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('event
 
 
 Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth');
-Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
+Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            

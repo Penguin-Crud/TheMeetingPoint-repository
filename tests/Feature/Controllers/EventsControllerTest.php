@@ -98,7 +98,7 @@ class EventsControllerTest extends TestCase
     //Btns Admin Crud
     public function test_admin_view_btns_of_crud()
     {
-        User::factory()->create(['isAdmin'=>true]);
+        $admin = User::factory()->create(['isAdmin'=>true]);
         Events::factory()->create();
 
         $response = $this->actingAs($admin)->get(route('landing'));
@@ -109,7 +109,7 @@ class EventsControllerTest extends TestCase
 
     public function test_user_dont_view_btns_of_crud()
     {
-        User::factory()->create();
+        $user = User::factory()->create();
         Events::factory()->create();
 
         $response = $this->actingAs($user)->get(route('landing'));
