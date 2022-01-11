@@ -117,7 +117,7 @@ class EventsController extends Controller
         }
 
         $request->validate([
-            'image' => 'required|image|max:2048'
+            'image' => 'image|max:2048'
         ]);
 
         $imagenes = $request->file('image')->store('public/imgUp');
