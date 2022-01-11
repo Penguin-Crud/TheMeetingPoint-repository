@@ -34,5 +34,30 @@ class Events extends Model
 
     public static function highlightedEvents(){
         return self::where('showSlider', true)->get();
-    }   
+    }
+    
+    private function students()
+    {
+        return $this->belongsToMany(User::class, 'students')->withTimestamps();
+    }
+
+    public function addStudent($userId)
+    {
+        $user = User::find($userId);
+        $this->students()->attach($user);
+    }
+
+    public function removeStudent($userId)
+    {
+        $user = User::find($userId);
+        $this->students()->detach($user);
+    }
+    
+    public function countStudents(): int
+    {
+        return $this->students()->count();
+    }
+
+
+
 }
