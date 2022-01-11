@@ -53,9 +53,9 @@ class Events extends Model
         $this->students()->detach($user);
     }
     
-    public function countStudent()
+    public function countStudents(): int
     {
-        $this->students()->count();
+        return $this->students()->count();
     }
 
 
