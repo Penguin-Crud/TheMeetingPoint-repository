@@ -58,6 +58,10 @@ class Events extends Model
         return $this->students()->count();
     }
 
+    public function isFull(): bool
+    {
+        return $this->countStudents() >= $this->people;
+    }
 
 
 }
