@@ -125,6 +125,11 @@ class EventsControllerTest extends TestCase
 
         $response = $this->get(route('landing'));
 
+
+        $response->assertDontSee('Delete');
+        $response->assertDontSee('Edit');
+    }
+
         $response->assertDontSee('Delete');
         $response->assertDontSee('Edit');
     }
