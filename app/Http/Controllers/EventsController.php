@@ -21,7 +21,7 @@ class EventsController extends Controller
     public function index()
     {
         $events = Events::all();
-        return view('landing', ['events'=> $events]);
+        return view('landing', ['events'=> $events, 'highlightedEvents' => Events::highlightedEvents()]);
     }
 
     /**

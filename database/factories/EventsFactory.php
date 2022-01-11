@@ -22,6 +22,7 @@ class EventsFactory extends Factory
             'date' => $this->faker->date('Y_m_d'),
             'time' => $this->faker->time(),
             'user_id' => User::all()->random(),
+            'showSlider' => false,
         ];
     }
 }

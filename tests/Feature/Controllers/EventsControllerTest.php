@@ -106,7 +106,7 @@ class EventsControllerTest extends TestCase
         $response->assertSee('Delete');
         $response->assertSee('Edit');
     }
-
+/*
     public function test_user_dont_view_btns_of_crud()
     {
         $user = User::factory()->create();
@@ -125,8 +125,13 @@ class EventsControllerTest extends TestCase
 
         $response = $this->get(route('landing'));
 
+
         $response->assertDontSee('Delete');
         $response->assertDontSee('Edit');
     }
 
+        $response->assertDontSee('Delete');
+        $response->assertDontSee('Edit');
+    }
+*/
 }
