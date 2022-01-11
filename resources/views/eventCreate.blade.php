@@ -3,13 +3,15 @@
     @section('EventCreate')
 
     <div class="album py-5">
-      <div class="container">
-        <form action="{{  route('events.store')  }}" method="POST" enctype="multipart/form-data">
+      <div>
+        @livewire('articles')
+
+        {{-- <form action="{{  route('events.store')  }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center flex-column">
           @csrf
 
           <div class="form-group d-flex flex-row align-items-center mb-5">
-            <label for="ImgURL" class="me-3 text-white">ImgURL:  </label>
-            {{-- <input name='image' type="url" class="form-control" id="ImgURL" > --}}
+            <label for="ImgURL" class="me-3 text-white">Image:  </label>
+           // <input name='image' type="url" class="form-control" id="ImgURL" >
             
             <input type="file" name="image" id="" accept="image/*">
             
@@ -24,7 +26,7 @@
             <label for="title" class="me-3 text-white">Title:  </label>
             <input name='title' type="text" class="form-control" id="title" >
           </div>
-            {{--<div class="form-group d-flex flex-row align-items-center mb-5">
+          <div class="form-group d-flex flex-row align-items-center mb-5">
             <label for="description" class="me-3 text-right  text-white">Description:  </label>
             <input name='description' type="text" class="form-control" id="description" >
           </div>
@@ -39,16 +41,18 @@
             <input name='date' type="text" class="form-control" id="date" >
           </div>
           <div class="form-group d-flex flex-row align-items-center">
-            <label for="people" class="me-3 text-white">Time:  </label>
-            <input name='people' type="text" class="form-control" id="people" >
-          </div> --}}
+            <label for="time" class="me-3 text-white">Time:  </label>
+            <input name='time' type="text" class="form-control" id="people" >
+          </div>
+
           <div class="d-flex justify-content-center mt-4">
             <button type="submit" class="btn btn-primary ">Submit</button>
           </div>
-        </form>
+        </form> --}}
+
       </div>
     </div>
-        
+      
     @endsection
 
 

@@ -16,7 +16,6 @@ class AdminTest extends TestCase
      */
     public function test_admin_is_by_defaul_false()//unit test
     {
-        
         $this->assertTrue(true);
         
     }

@@ -1,0 +1,27 @@
+Comandos:
+
+php artisan serve
+php artisan make:test 'carpeta'/'nombre del test'
+php artisan test --filter
+
+
+
+
+
+Codigos de estado de respuesta HTTP:
+
+100-199(respuestas informativas)
+200-299(respuestas satisfactorias)
+300-399(redirecciones)
+400-499(errores de clientes)
+500-599(errores de los servidores)
+
+
+
+Cuando se utilizan factorias dentro del test:
+
+$this->withoutExceptionHandling();
+use RefreshDataBase
+
+
+video 16/12 min 52:37
