@@ -94,4 +94,22 @@ class EventsTest extends TestCase
         $event->removeStudent($user->id);
         $this->assertEquals(0, $event->countStudents());
     }
+
+    public function test_events_is_full()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['people'=>1]);
+
+        $event->addStudent($user->id);
+        $this->assertTrue($event->isFull());
+    }
+
+    public function test_events_is_not_full()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['people'=>2]);
+
+        $event->addStudent($user->id);
+        $this->assertFalse($event->isFull());
+    }
 }
