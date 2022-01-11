@@ -20,7 +20,7 @@
             <label for="ImgURL" class="me-3 text-white">Image:  </label>
             
             {{-- <input name='image' type="url" class="form-control" id="ImgURL" > --}}
-            <input type="file" name="image" id="" accept="image/*">
+            <input type="file"  name="image" id="" accept="image/*">
             
             @error('image')
                 <small class="text-danger"> {{ $message }} </small>
