@@ -67,4 +67,49 @@ class EventsTest extends TestCase
         $this->assertCount(2, $highlightedEvents);
     }
 
+    public function test_user_join_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $event->addStudent($user->id);
+        $this->assertDatabaseCount('students',1);
+    }
+
+    public function test_count_students_joined_in_an_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $event->addStudent($user->id);
+        $this->assertEquals(1, $event->countStudents());
+    }
+
+    public function test_students_can_unjoin_in_an_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create();
+
+        $event->addStudent($user->id);
+        $event->removeStudent($user->id);
+        $this->assertEquals(0, $event->countStudents());
+    }
+
+    public function test_events_is_full()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['people'=>1]);
+
+        $event->addStudent($user->id);
+        $this->assertTrue($event->isFull());
+    }
+
+    public function test_events_is_not_full()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['people'=>2]);
+
+        $event->addStudent($user->id);
+        $this->assertFalse($event->isFull());
+    }
 }
