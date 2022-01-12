@@ -52,4 +52,14 @@ class UserTest extends TestCase
         $this->assertTrue($response);
     }
 
+    public function test_can_get_user_joined_events()
+    {
+        $user = User::factory()->create();
+        $event = Events::factory()->create(['people'=>2]);
+
+        $event->addStudent($user->id);
+
+        $this->assertEquals(1, $user->myJoinedEvents()->count());
+    }
+
 }
