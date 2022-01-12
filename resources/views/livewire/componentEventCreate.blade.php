@@ -69,7 +69,7 @@
             </div>
 
 
-          <div class="form-group d-flex flex-row align-items-center">
+            <div class="form-group d-flex flex-row align-items-center">
               <label for="title" class="me-3 text-white">Title:  </label>
               <input wire:model="title" name='title' type="text" class="form-control" id="title" >
             </div>

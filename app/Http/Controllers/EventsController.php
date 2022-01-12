@@ -102,6 +102,10 @@ class EventsController extends Controller
         if(!$request->image){
             $data = [
                 'title' => $request->title,
+                'description' => $request->description,
+                'people' => $request->people,
+                'date' => $request->date,
+                'time' => $request->time,
                 'user_id' =>Auth::user()->id,
                 ];
             $eventToUpdate->update($data);
@@ -117,6 +121,10 @@ class EventsController extends Controller
         $data = [
             'title' => $request->title,
             'image' => $url,
+            'description' => $request->description,
+            'people' => $request->people,
+            'date' => $request->date,
+            'time' => $request->time,
             'user_id' =>Auth::user()->id,
         ];
         $eventToUpdate->update($data);

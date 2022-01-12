@@ -12,14 +12,26 @@ class Componenteventedit extends Component
 {
     public $event;
     public $title;
+    public $description;
+    public $people;
+    public $date;
+    public $time;
+
+
     public $url;
     use WithFileUploads;
     public $image;
     
     public function mount()
     {
-        $this->title = $this->event->title;
         $this->image = $this->url;
+
+        $this->title = $this->event->title;
+        $this->description = $this->event->description;
+        $this->people = $this->event->people;
+        $this->date = $this->event->date;
+        $this->time = $this->event->time;
+
     }
     public function photoPreview()
     {
