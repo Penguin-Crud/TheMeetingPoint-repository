@@ -21,5 +21,6 @@
     </div>
 </div> --}}
 {{-- Plantilla html de la card --}}
+
 <livewire:home-my-events-list/>
 @endsection

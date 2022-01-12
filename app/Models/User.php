@@ -68,6 +68,6 @@ class User extends Authenticatable
 
     public function myJoinedEvents()
     {
-        return $this->belongsToMany(Events::class, 'students')->withTimestamps();;
+        return $this->belongsToMany(Events::class, 'students')->withTimestamps();
     }
 }
