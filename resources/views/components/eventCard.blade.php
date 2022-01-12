@@ -13,7 +13,9 @@
         </div>
         <p class="card-text">{{ $itemEvent->description }}</p>
         <div class="d-flex justify-content-between">
-          <button class="bg-warning text-white">Allow</button>
+          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
+            <button class="bg-warning text-white">Allow</button>
+          </a>
           <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
         </div>
 
