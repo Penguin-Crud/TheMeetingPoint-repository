@@ -37,7 +37,7 @@ class HomeController extends Controller
 
         $list = [];
         $user_id = Auth()->user()->id;
-        
+
         $allowEventsList = DB::table('students')->where('user_id', $user_id)->get();
 
         foreach ($allowEventsList as $itemAllowEvent) {
@@ -45,17 +45,8 @@ class HomeController extends Controller
             $x = Events::where('id', $id)->get();
             array_push($list, $x);
         }
-        // dd($list[0][0]);
-        // $cosa = Events::all();
-        // dd($cosa[0]);
-        // dd($allowEventsList);
 
-
-        // dd(auth()->user());
-        // dd($events);
-        // $eventToAllow = Events::findOrFail($id);
-
-        return $list;
+        return redirect('home');
     }
 
     
