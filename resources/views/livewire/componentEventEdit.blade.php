@@ -1,5 +1,5 @@
 <div>
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container d-flex jutify-content-around">
 
       <div class="col">
@@ -75,7 +75,7 @@
         <div id="inputImagee" class="form-group d-flex flex-row align-items-center mb-5">
           <label for="ImgURL" class="me-3 text-white">Image:  </label>
           
-          <input  wire:model="image" type="file" name="image" id="" accept="image/*">
+          <input  wire:model="image" type="file" name="image" class="text-white" accept="image/*">
           
           @error('image')
               <small class="text-danger"> {{ $message }} </small>
@@ -83,24 +83,24 @@
         </div>
 
         <div class="form-group d-flex flex-row align-items-center">
-          <label for="title" class="me-3 text-right">TITLE: </label>
+          <label for="title" class="me-3 text-right text-white">TITLE: </label>
           <input wire:model="title" type="text" value="{{$event->title}}" name="title" class="form-control" id="title" >
         </div>
         <div class="form-group d-flex flex-row align-items-center mb-3">
-          <label for="description" class="me-3 text-right">Description:  </label>
+          <label for="description" class="me-3 text-right text-white">Description:  </label>
           <input wire:model="description" name='description' value="{{$event->description}}" type="text" class="form-control" id="description" >
         </div>
 
         <div class="form-group d-flex flex-row align-items-center">
-          <label for="people" class="me-3 text-right">MaxPeople:  </label>
+          <label for="people" class="me-3 text-right text-white">MaxPeople:  </label>
           <input wire:model="people" name='people' value="{{$event->people}}" type="text" class="form-control" id="people" >
         </div>
         <div class="form-group d-flex flex-row align-items-center">
-          <label for="date" class="me-3 text-right">aaaa/dd/mm:  </label>
+          <label for="date" class="me-3 text-right text-white">aaaa/dd/mm:  </label>
           <input wire:model="date" name='date' value="{{$event->date}}" type="text" class="form-control" id="date" >
         </div>
         <div class="form-group d-flex flex-row align-items-center">
-          <label for="time" class="me-3 text-right">hh:mm:  </label>
+          <label for="time" class="me-3 text-right text-white">hh:mm:  </label>
           <input wire:model="time" name='time' value="{{$event->time}}" type="text" class="form-control" id="time" >
         </div>
 

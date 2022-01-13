@@ -21,7 +21,7 @@
 
         <div class="d-flex justify-content-center align-items-center flex-column">
           @auth
-              
+          
           @if (Auth::user()->isAdmin())
           
           <div class="btn-group mt-2">
