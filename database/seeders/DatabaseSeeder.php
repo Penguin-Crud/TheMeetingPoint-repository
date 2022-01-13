@@ -30,54 +30,36 @@ class DatabaseSeeder extends Seeder
 
         User::factory(2)->create();
 
-        $event1 = Events::factory()->create([
-            'title' => 'guayaquil',
-            'image' => 'https://pymstatic.com/85493/conversions/coach-guayaquil-default.jpg',
-            'user_id' => '1',
-            'showSlider' => true,
-            'description' => 'Lorem Ipsum facty como que n tee juhy jauen fpaiaif e napamte lemfasmee e fajef  najdjw wkajwu wmd.',
-        ]);
-        $event2 = Events::factory()->create([
-            'title' => 'barcelona',
-            'image' => 'https://media.cntraveler.com/photos/5a985924d41cc84048ce6db0/master/w_4348,h_3261,c_limit/Catedral-de-Barcelona-GettyImages-511874340.jpg',
-            'user_id' => '1',
-            'showSlider' => true,
-        ]);
-        $event3 = Events::factory()->create([
-            'title' => 'Parc Guell',
-            'image' => 'https://lp-cms-production.imgix.net/2021-07/GettyRF_1137803766.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850',
-            'user_id' => '1',
-            'showSlider' => true,
-        ]);
-        Events::factory(10)->create();
-
-        $event1->addStudent($user->id);
-        $event2->addStudent($user->id);
-        $event3->addStudent($user->id);
+        
         
 
         
-        Events::factory()->create([
+        $event1=Events::factory()->create([
             'title' => 'Api Rest',
             'image' => 'https://edteam-media.s3.amazonaws.com/courses/original/fbda9747-85b7-482e-8ffc-547b98031ca4.png',
             'user_id' => '1',
             'showSlider' => true,
             'description' => 'Curso de ApiRest',
         ]);
-        Events::factory()->create([
+        $event2=Events::factory()->create([
             'title' => 'Arduinos',
             'image' => 'https://edteam-media.s3.amazonaws.com/courses/original/1bada4e8-4bab-4be8-8f2e-83e285515187.png',
             'user_id' => '1',
             'showSlider' => true,
             'description' => 'Curso de Arduinos desde cero'
         ]);
-        Events::factory()->create([
+        $event3=Events::factory()->create([
             'title' => 'Base de Datos SQL',
             'image' => 'https://edteam-media.s3.amazonaws.com/courses/original/e02f6289-883c-454c-8f35-f6a0cee78066.jpg',
             'user_id' => '1',
             'showSlider' => true,
             'description' => 'Curso de Base de Datos desde cero'
         ]);
+
+        $event1->addStudent($user->id);
+        $event2->addStudent($user->id);
+        $event3->addStudent($user->id);
+
         Events::factory()->create([
             'title' => 'CSS',
             'image' => 'https://edteam-media.s3.amazonaws.com/courses/original/daa72e4e-c5d0-406e-9f6d-01e646bf719b.png',
