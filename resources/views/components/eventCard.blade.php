@@ -1,6 +1,6 @@
 @props(['itemEvent'])
 <div class="col">
-    <div class="card shadow-sm">
+    <div class="card shadow-sm h-100">
       {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> --}}
       <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ $itemEvent->image }}" alt="No funciona">
       <div class="card-body">
@@ -13,7 +13,9 @@
         </div>
         <p class="card-text">{{ $itemEvent->description }}</p>
         <div class="d-flex justify-content-between">
-          <button class="bg-warning text-white">Allow</button>
+          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
+            <button class="bg-warning text-white">Allow</button>
+          </a>
           <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
         </div>
 

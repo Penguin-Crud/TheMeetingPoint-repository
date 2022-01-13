@@ -36,7 +36,7 @@ class Events extends Model
         return self::where('showSlider', true)->get();
     }
     
-    private function students()
+    public function students()
     {
         return $this->belongsToMany(User::class, 'students')->withTimestamps();
     }

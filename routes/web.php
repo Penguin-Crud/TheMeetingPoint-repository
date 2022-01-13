@@ -26,6 +26,8 @@ Route::get('/events/create', [EventsController::class, 'create'])->name('events.
 Route::post('/events', [EventsController::class, 'store'])->name('events.store');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/allowevent/{events}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
+
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 Route::get('events/highlight/{id}', [SliderController::class, 'toggleHighlightSlider'])->name('events.highlight')->middleware('auth');
