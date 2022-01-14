@@ -34,6 +34,7 @@ class EventsTest extends TestCase
     {   
         $user = User::factory()->create();
         $event = Events::factory()->create();
+        
         $event->toggleHighlight();
         
         $this->assertTrue($event->showSlider);
@@ -47,6 +48,7 @@ class EventsTest extends TestCase
     {   
         $user = User::factory()->create();
         $event = Events::factory()->create();
+
         $event->toggleHighlight();
         $event->toggleHighlight();
         
@@ -61,9 +63,11 @@ class EventsTest extends TestCase
     {
         $user = User::factory()->create();
         $events = Events::factory(3)->create();
+
         $events[0]->toggleHighlight();
         $events[1]->toggleHighlight();
         $highlightedEvents = Events::highlightedEvents();
+
         $this->assertCount(2, $highlightedEvents);
     }
 
@@ -73,6 +77,7 @@ class EventsTest extends TestCase
         $event = Events::factory()->create();
 
         $event->addStudent($user->id);
+
         $this->assertDatabaseCount('students',1);
     }
 
@@ -82,6 +87,7 @@ class EventsTest extends TestCase
         $event = Events::factory()->create();
 
         $event->addStudent($user->id);
+
         $this->assertEquals(1, $event->countStudents());
     }
 
@@ -92,15 +98,20 @@ class EventsTest extends TestCase
 
         $event->addStudent($user->id);
         $event->removeStudent($user->id);
+
         $this->assertEquals(0, $event->countStudents());
     }
 
     public function test_events_is_full()
     {
         $user = User::factory()->create();
-        $event = Events::factory()->create(['people'=>1]);
+        $user2 = User::factory()->create();
+
+        $event = Events::factory()->create(['people'=>2]);
 
         $event->addStudent($user->id);
+        $event->addStudent($user2->id);
+
         $this->assertTrue($event->isFull());
     }
 

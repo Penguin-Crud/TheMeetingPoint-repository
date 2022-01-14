@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         if ($this->isAdmin) return true;
     }
+
+    public function myJoinedEvents()
+    {
+        return $this->belongsToMany(Events::class, 'students')->withTimestamps();
+    }
 }

@@ -41,23 +41,9 @@ class Componenteventedit extends Component
         $imagenes = $this->image->file('image')->store('public/imgUp');
         $this->url = Storage::url($imagenes);
     }
-    public function image()
-    {
-        
-    }
     
     // public function render()
     // {
     //     return view('livewire.componentEventEdit', ['event'=> $this->eventToEdit]);
     // }
-    // public $id;
-    // public $title;
-    // public $description;
-    // public $people;
-    // public $date;
-    // public $time;
-
-
-
-
 }
