@@ -10,8 +10,7 @@
             <h2 class="text-white">You're not subscribed to any events. </h2>
           @else
             @foreach ($myEvents as $itemEvent)
-            {{-- <p>{{$itemEvent->title}}</p> --}}
-              <x-eventCard :itemEvent='$itemEvent'/>
+              <x-myEventCard :itemEvent='$itemEvent'/>
             @endforeach
           @endif
 
