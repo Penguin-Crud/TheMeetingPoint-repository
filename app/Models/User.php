@@ -54,6 +54,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class, 'loves');
     }
+    
     public function isInLove($eventid)
     {
         if ($this->loves()->find($eventid)) return true;
