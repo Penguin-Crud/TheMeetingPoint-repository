@@ -151,8 +151,19 @@ class EventsController extends Controller
         return back();
     }
 
-    public function changeTextColor()
+    /* public function changeTextColor()
     {
         $maxpeople = 'people';
-    }
+        $maxpeople = 23;
+        $people = 0;
+
+        if ($people >= $maxpeople) {
+            $color = 'text-danger';
+        } else if ($people <= $maxpeople) {
+            $color = 'text-dark';
+        }
+        return view('/events/create', compact ('maxpeople', 'people'));
+    }*/
+    
+
 }

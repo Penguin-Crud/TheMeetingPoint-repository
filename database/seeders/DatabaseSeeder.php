@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => '1',
             'showSlider' => true,
             'description' => 'Curso de ApiRest',
+            'people' => '1'
         ]);
         $event2=Events::factory()->create([
             'title' => 'Arduinos',

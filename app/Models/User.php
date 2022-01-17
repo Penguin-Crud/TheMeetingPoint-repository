@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Events::class, 'students')->withTimestamps();
     }
+
+    public function isSubscribed(Events $event): bool
+    {
+        return $this->myJoinedEvents->contains($event);
+    }
 }
