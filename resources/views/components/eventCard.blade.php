@@ -13,9 +13,13 @@
         </div>
         <p class="card-text">{{ $itemEvent->description }}</p>
         <div class="d-flex justify-content-between">
-          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
+          {{-- <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
             <button class="bg-warning text-white">Suscribe</button>
-          </a>
+          </a> --}}
+          <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
+            @csrf
+            <button class="bg-warning text-white">Suscribe</button>
+          </form>
           <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
         </div>
 
