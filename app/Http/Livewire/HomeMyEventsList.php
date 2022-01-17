@@ -14,6 +14,7 @@ class HomeMyEventsList extends Component
     
 
     public function mount() {
+        
         $this->myEvents = Auth::user()->myJoinedEvents;
         // $this->myEvents = Events::all();
     }
