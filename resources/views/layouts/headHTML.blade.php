@@ -68,14 +68,30 @@
         font-size: 3.5rem;
       }
     }
+
+    .navbar-btn {
+    border-color: #000000 !important;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0) !important;
+    background-color: #FFC700;
+    padding: 6px 12px !important;
+    margin: 0px 0px 0px 10px;
+    }
+    .navbar-btn:hover {
+        color: rgb(0, 0, 0) !important;
+        background-color: #6bd0f8 !important;
+        border-color: #000000 !important;
+    }
   </style>
 
   @livewireStyles
     
 </head>
 <body style="background-color: black">
-  <header style="background-color: #FFC700";>
-    <div class="collapse " id="navbarHeader">
+  <header style="background-color: #ffc700";>
+    <div class="collapse " style="background-color: #ffc700" id="navbarHeader">
       <div class="container">
         <div class="row">
           <div class="col-sm-4 offset-md-1 py-4">
@@ -138,8 +154,8 @@
         <img src="../../../img/logo.png" style="width: 70%"/>  
         </a>
         <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="../../../img/menu.png" alt="">
         </button>
       </div>
     </div>
