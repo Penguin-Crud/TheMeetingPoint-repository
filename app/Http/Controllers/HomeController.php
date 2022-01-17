@@ -32,14 +32,12 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function allowEvent($id) // lo verde identifica que el parametro encuentra relacion con un model existente con el mismo nombre
+    public function allowEvent($id)
     {   
         $event = Events::find($id);
         $user = Auth::user();
-        $myEventsList = $user->myJoinedEvents;
-        if($myEventsList->contains($event)) return redirect('home');
+        if(!$event->addStudent($user->id)) return redirect('home');
         
-        $event->addStudent($user->id);
         Mail::to($user->email)->send(new SubscribingEvent($user, $event));
         
         return redirect('home');
