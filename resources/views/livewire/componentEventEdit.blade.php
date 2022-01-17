@@ -97,7 +97,7 @@
         </div>
         <div class="form-group d-flex flex-row align-items-center">
           <label for="date" class="me-3 text-right text-white">aaaa/dd/mm:  </label>
-          <input wire:model="date" name='date' value="{{$event->date}}" type="datetime-local" class="form-control" id="date" >
+          <input wire:model="date" name='date' value="{{$event->date}}" type="text" class="form-control" id="date" >
         </div>
         <div class="form-group d-flex flex-row align-items-center">
           <label for="time" class="me-3 text-right text-white">hh:mm:  </label>
@@ -110,4 +110,6 @@
 
     </div>
   </div>
+  {{-- datetime-local --}}
 </div>
+

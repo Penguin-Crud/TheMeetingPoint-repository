@@ -8,8 +8,8 @@
     @endif
     
     @for ($i = 1; $i < count($events); $i++)
-    <div class="carousel-item">
-      <img src="{{$events[$i]->image}}" class="d-block w-100" alt="Highlighted event {{$events[$i]->title}}">
+    <div class="carousel-item" style="">
+      <img src="{{$events[$i]->image}}" class="d-block w-100" style="object-fit: cover; object-position: 100% 100%" alt="Highlighted event {{$events[$i]->title}}">
     </div>
     @endfor
 

@@ -48,16 +48,16 @@ class EventsController extends Controller
         $request->validate([
             'image' => 'required|image|max:2048'
         ]);
-        
+
         $imagenes = $request->file('image')->store('public/imgUp');
         $url = Storage::url($imagenes);
-        
+
         Events::create([
             'image' => $url,
             'title' => $request->title,
             'description' => $request->description,
             'people' => $request->people,
-            'user_id' =>Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'date' => $request->date,
             'time' => $request->time,
         ]);
@@ -84,11 +84,11 @@ class EventsController extends Controller
     public function edit($id)
     {
         $eventToEdit = Events::findOrFail($id);
-        
-        if (! Auth::user()->isAdmin){
+
+        if (!Auth::user()->isAdmin) {
             return back();
         };
-        return view('eventEdit', ['event'=>$eventToEdit]);
+        return view('eventEdit', ['event' => $eventToEdit]);
     }
 
     /**
@@ -101,15 +101,15 @@ class EventsController extends Controller
     public function update($id, Request $request)
     {
         $eventToUpdate = Events::findOrFail($id);
-        if(!$request->image){
+        if (!$request->image) {
             $data = [
                 'title' => $request->title,
                 'description' => $request->description,
                 'people' => $request->people,
                 'date' => $request->date,
                 'time' => $request->time,
-                'user_id' =>Auth::user()->id,
-                ];
+                'user_id' => Auth::user()->id,
+            ];
             $eventToUpdate->update($data);
             return redirect(route('landing'));
         }
@@ -127,7 +127,7 @@ class EventsController extends Controller
             'people' => $request->people,
             'date' => $request->date,
             'time' => $request->time,
-            'user_id' =>Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ];
         $eventToUpdate->update($data);
         return redirect(route('landing'));
@@ -141,14 +141,16 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-         // Events::destroy($id);
+        // Events::destroy($id);
 
         $eventToDelete = Events::findOrFail($id);
         //Auth::user()->isAdmin
-        if (Auth::id() != $eventToDelete->author->id){return back();};
+        if (Auth::id() != $eventToDelete->author->id) {
+            return back();
+        };
 
         $eventToDelete->delete();
-      
+
         return back();
     }
 
@@ -163,5 +165,10 @@ class EventsController extends Controller
 
         $events = Events::orderBy('date', 'asc')->get();
         dd($events);
+    }
+
+    public function changeTextColor()
+    {
+        $maxpeople = 'people';
     }
 }

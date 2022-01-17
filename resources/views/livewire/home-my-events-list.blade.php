@@ -29,7 +29,7 @@
                     {{-- <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
                       <button class="bg-warning text-white">unsubscribe</button>
                     </a> --}}
-                    <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
+                    <p class="card-text">Persons : {{$itemEvent->countStudents()}}/ {{ $itemEvent->people }}</p>
                   </div>
           
                   <div class="d-flex justify-content-center align-items-center flex-column">
