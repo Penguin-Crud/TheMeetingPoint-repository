@@ -46,12 +46,12 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
 
-Route::get('/notify/{eventId}', function($eventId)
-{
-    $user = Auth::user();
-    $event = Events::find($eventId);
-    $subscribeEvent = new SubscribingEvent($user, $event);
-    Mail::to($user->email)->send($subscribeEvent);
+// Route::get('/notify/{eventId}', function($eventId)
+// {
+//     $user = Auth::user();
+//     $event = Events::find($eventId);
+//     $subscribeEvent = new SubscribingEvent($user, $event);
+//     Mail::to($user->email)->send($subscribeEvent);
 
-    return $subscribeEvent->render();
-})->middleware('auth');
+//     return $subscribeEvent->render();
+// })->middleware('auth');
