@@ -17,12 +17,12 @@ class EventsTest extends TestCase
      * @return void
      */
 
-     //SHOW SLIDER
+    //SHOW SLIDER
     public function test_an_event_by_default_is_not_hightlited()
-    {   
+    {
         $user = User::factory()->create();
         $event = Events::factory()->create();
-        
+
         $this->assertFalse($event->showSlider);
         $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
@@ -31,12 +31,12 @@ class EventsTest extends TestCase
     }
 
     public function test_an_event_by_can_be_hightlited()
-    {   
+    {
         $user = User::factory()->create();
         $event = Events::factory()->create();
-        
+
         $event->toggleHighlight();
-        
+
         $this->assertTrue($event->showSlider);
         $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
@@ -45,13 +45,13 @@ class EventsTest extends TestCase
     }
 
     public function test_an_event_by_can_be_dehightlited()
-    {   
+    {
         $user = User::factory()->create();
         $event = Events::factory()->create();
 
         $event->toggleHighlight();
         $event->toggleHighlight();
-        
+
         $this->assertFalse($event->showSlider);
         $this->assertDatabaseCount('events', 1);
         $this->assertDatabaseHas('events',  [
@@ -78,7 +78,7 @@ class EventsTest extends TestCase
 
         $event->addStudent($user->id);
 
-        $this->assertDatabaseCount('students',1);
+        $this->assertDatabaseCount('students', 1);
     }
 
     public function test_count_students_joined_in_an_events()
@@ -107,7 +107,7 @@ class EventsTest extends TestCase
         $user = User::factory()->create();
         $user2 = User::factory()->create();
 
-        $event = Events::factory()->create(['people'=>2]);
+        $event = Events::factory()->create(['people' => 2]);
 
         $event->addStudent($user->id);
         $event->addStudent($user2->id);
@@ -118,9 +118,24 @@ class EventsTest extends TestCase
     public function test_events_is_not_full()
     {
         $user = User::factory()->create();
-        $event = Events::factory()->create(['people'=>2]);
+        $event = Events::factory()->create(['people' => 2]);
 
         $event->addStudent($user->id);
         $this->assertFalse($event->isFull());
+    }
+
+    public function test_students_who_joined_events_counter()
+    {
+        $user = User::factory()->create();
+        $user2 = User::factory()->create();
+
+        $event = Events::factory()->create(['people' => 2]);
+
+        $event->addStudent($user->id);
+        $event->addStudent($user2->id);
+
+
+        $sut = $event->countStudents();
+        $this->assertEquals(2, $sut);
     }
 }

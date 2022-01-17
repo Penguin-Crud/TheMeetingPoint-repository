@@ -45,21 +45,11 @@ class User extends Authenticatable
 
 
 
-    public function events() {
+    public function events()
+    {
         return $this->hasMany(Event::class);
     }
 
-    
-    public function loves()
-    {
-        return $this->belongsToMany(Event::class, 'loves');
-    }
-    
-    public function isInLove($eventid)
-    {
-        if ($this->loves()->find($eventid)) return true;
-        return false;
-    }
 
 
     public function isAdmin()
