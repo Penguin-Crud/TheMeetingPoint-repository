@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Events extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'mi_fecha' => 'datetime:Y-m-d',
+        'mi_hora' => 'datetime:H:i:s'
+        ];
 
     protected $fillable = [
         'title',
@@ -62,6 +67,4 @@ class Events extends Model
     {
         return $this->countStudents() >= $this->people;
     }
-
-
 }

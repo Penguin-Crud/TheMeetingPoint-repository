@@ -6,6 +6,7 @@ use App\Http\Requests\StoreeventsRequest;
 use App\Http\Requests\UpdateeventsRequest;
 use App\Models\Events;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,8 @@ class EventsController extends Controller
     public function index()
     {
         $events = Events::all();
+        $events = Events::orderBy('date', 'asc')->get();
+
         return view('landing', ['events'=> $events, 'highlightedEvents' => Events::highlightedEvents()]);
     }
 
@@ -147,5 +150,18 @@ class EventsController extends Controller
         $eventToDelete->delete();
       
         return back();
+    }
+
+    public function date(Request $request)
+    { 
+        
+        // date_default_timezone_set('Europe/Madrid');
+        // $fecha_actual = $request->date;
+        // $time = strtotime($fecha_actual);
+        // $fechaLocal = date("d-m-Y H:i:s", $time);
+        // return [$fechaLocal, $request->title];
+
+        $events = Events::orderBy('date', 'asc')->get();
+        dd($events);
     }
 }

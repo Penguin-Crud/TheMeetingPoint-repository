@@ -39,3 +39,5 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
+
+Route::get('/date', [EventsController::class, 'date'])->name('events.date')->middleware('auth');                            
