@@ -44,7 +44,7 @@ class Events extends Model
     public function addStudent($userId): bool
     {
         $user = User::find($userId);
-        if($user->myJoinedEvents->contains($this)) return false;
+        if($user->isSubscribed($this) || $this->isFull() ) return false;
         
         $this->students()->attach($user);
         return true;

@@ -20,7 +20,7 @@
             @csrf
             <button class="bg-warning text-white">Suscribe</button>
           </form>
-          <p class="card-text">Persons : 0 / {{ $itemEvent->people }}</p>
+          <p class="card-text">Persons : {{$itemEvent->countStudents()}} / {{ $itemEvent->people }}</p>
         </div>
 
         <div class="d-flex justify-content-center align-items-center flex-column">
