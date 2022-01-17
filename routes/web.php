@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Componenteventedit;
 use App\Http\Controllers\SliderController;
 use App\Http\Livewire\HomeMyEventsList;
+use App\Mail\NotificationsMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,11 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
+
+Route::get('/notify', function()
+{
+    $mail = new NotificationsMailable;
+    Mail::to('hola@gmail.com')->send($mail);
+
+    return "Message sent";
+});
