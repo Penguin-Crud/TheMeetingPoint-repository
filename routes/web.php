@@ -8,6 +8,9 @@ use App\Http\Livewire\Componenteventedit;
 use App\Http\Controllers\SliderController;
 use App\Http\Livewire\HomeMyEventsList;
 use App\Mail\NotificationsMailable;
+use App\Mail\SubscribingEvent;
+use App\Models\Events;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -42,10 +45,12 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
 
-Route::get('/notify', function()
+Route::get('/notify/{eventId}', function($eventId)
 {
-    $mail = new NotificationsMailable;
-    Mail::to('hola@gmail.com')->send($mail);
+    $user = Auth::user();
+    $event = Events::find($eventId);
+    $subscribeEvent = new SubscribingEvent($user, $event);
+    Mail::to($user->email)->send($subscribeEvent);
 
-    return "Message sent";
-});
+    return $subscribeEvent->render();
+})->middleware('auth');

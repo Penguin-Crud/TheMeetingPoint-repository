@@ -43,19 +43,7 @@ class HomeController extends Controller
         
         $events->addStudent(auth()->user()->id);
         
-        // dd($myEventsList[0]->id);
-        // dd($events->id);
 
-        // $list = [];
-        // $user_id = Auth()->user()->id;
-
-        // $allowEventsList = DB::table('students')->where('user_id', $user_id)->get();
-
-        // foreach ($allowEventsList as $itemAllowEvent) {
-        //     $id = $itemAllowEvent->events_id;
-        //     $x = Events::where('id', $id)->get();
-        //     array_push($list, $x);
-        // }
 
         return redirect('home');
     }
