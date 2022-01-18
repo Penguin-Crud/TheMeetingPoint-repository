@@ -81,17 +81,28 @@
         background-color: #ffffff !important;
         border-color: #000000 !important;
     }
-    .body-bg{
-      background-image: url(../../../../../img/ojo.jpg);
-      background-attachment: fixed;
+    html,body{
+      display: block;
+    }
+    canvas{
+      display: block;
+      position: fixed;
+      top: 0;
+      z-index: -1;
+    }
+    .header-position{
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
   </style>
 
   @livewireStyles
     
 </head>
-<body class="body-bg">
-  <header style="background-color: #ffc700";>
+<body>
+  <canvas id="canvas"></canvas>
+  <header class="header-position" style="background-color: #ffc700";>
     <div class="navbar navbar-dark shadow-sm">
       <div class="container">
         <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
@@ -161,7 +172,7 @@
       </div>
     </div>
   </header>
-
+  
   @auth
     <nav>
       
@@ -182,9 +193,50 @@
       <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
       <p class="mb-0">New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
     </div>
-  </footer> --}}
-
+  </footer> --}}  
   <script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
+  <script type="text/javascript">
+    //Fuente Original :  http://timelessname.com/sandbox/matrix.html
+    //Configura el canvas para que ocupe la pantalla entera 
+    canvas.height = window.screen.height;
+    canvas.width = window.screen.width;
+
+    // una entrada en el array por columna de texto
+    //cada valor represnta la posición y actual de la columna.  (en canvas 0 es en la parte superior y los valores positivos de y van disminuyendo)
+    var columns = []
+    for (i = 0; i < 256; columns[i++] = 1);
+
+    //ejecutado una vez por fotograma
+    function step() {
+        //Ligeramente oscurece todo el canvas dibujando un rectángulo negro casi trasnsparente sobre todo el canvas
+        /*esto explica tanto el flash inicial de blanco a negro (por defecto el canvas es blanco y progresivamente se convierte en negro) como el fading de los caracteres.*/
+        canvas.getContext('2d').fillStyle = 'rgba(0,0,0,0.05)';
+        canvas.getContext('2d').fillRect(0, 0, canvas.width, canvas.height);
+        
+        //verde
+        canvas.getContext('2d').fillStyle = '#0F0';
+        //para cada clolumna
+        columns.map(function (value, index) {
+            //fromCharCode convierte puntos de código unicode ( http://en.wikipedia.org/wiki/Code_point ) a un string
+            //Los code points están en el rango 30000-30032 (0x7530-0x7550) (田-畐)
+            //que está incluido en el bloque de ideogramas unificado CJK ( http://en.wikipedia.org/wiki/CJK_Unified_Ideographs )
+            var character = String.fromCharCode(9e10 +
+                                                Math.random() * 33);
+            //dibujar el carácter
+            canvas.getContext('2d').fillText(character, //texto
+                                            index * 10, //x
+                                            value //y
+                                            );
+            
+            //desplaza hacia abajo el carácter
+            //si el carácter es menor de 758 entonces hay una posibilidad aleatoria de que sea reseteado
+            columns[index] = value > 758 + Math.random() * 1e4 ? 0 : value + 10
+        })
+    }
+
+    //1000/33 = ~30 veces por segundo
+    setInterval(step, 33)
+  </script>
   @livewireScripts
   
 </body>
