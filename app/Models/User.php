@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'timezone'
     ];
 
     /**
@@ -49,7 +50,7 @@ class User extends Authenticatable
         return $this->hasMany(Event::class);
     }
 
-    
+
     public function loves()
     {
         return $this->belongsToMany(Event::class, 'loves');
@@ -69,5 +70,15 @@ class User extends Authenticatable
     public function myJoinedEvents()
     {
         return $this->belongsToMany(Events::class, 'students')->withTimestamps();
+    }
+
+    public function getTimeZoneAttribute ($value): string
+    {
+        return $value == config('app.timezone') || empty($value) ? config('app.timezone') : $value;
+    }
+
+    public function setTimeZoneAttribute($value)
+    {
+        $this->attributes['timezone'] = $value == config('app.timezone') || is_null($value) ? null : $value;
     }
 }

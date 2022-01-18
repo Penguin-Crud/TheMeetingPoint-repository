@@ -22,8 +22,8 @@ class CreateEventsTable extends Migration
             $table->string('image', 250);
             $table->string('description');
             $table->integer('people');
-            $table->date('date');
-            $table->time('time');
+            $table->dateTime('date');
+            // $table->time('time');
         });
     }
 
