@@ -47,10 +47,13 @@ class Events extends Model
         return $this->belongsToMany(User::class, 'students')->withTimestamps();
     }
 
-    public function addStudent($userId)
+    public function addStudent($userId): bool
     {
         $user = User::find($userId);
+        if($user->isSubscribed($this) || $this->isFull() ) return false;
+        
         $this->students()->attach($user);
+        return true;
     }
 
     public function removeStudent($userId)
