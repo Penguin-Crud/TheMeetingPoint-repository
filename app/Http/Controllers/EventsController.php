@@ -24,7 +24,7 @@ class EventsController extends Controller
         $events = Events::all();
         $events = Events::orderBy('date', 'asc')->get();
 
-        return view('landing', ['events'=> $events, 'highlightedEvents' => Events::highlightedEvents()]);
+        return view('landing', ['events' => $events, 'highlightedEvents' => Events::highlightedEvents()]);
     }
 
     /**
@@ -155,8 +155,8 @@ class EventsController extends Controller
     }
 
     public function date(Request $request)
-    { 
-        
+    {
+
         // date_default_timezone_set('Europe/Madrid');
         // $fecha_actual = $request->date;
         // $time = strtotime($fecha_actual);
@@ -167,8 +167,17 @@ class EventsController extends Controller
         dd($events);
     }
 
-    public function changeTextColor()
+    /* public function changeTextColor()
     {
         $maxpeople = 'people';
-    }
+        $maxpeople = 23;
+        $people = 0;
+
+        if ($people >= $maxpeople) {
+            $color = 'text-danger';
+        } else if ($people <= $maxpeople) {
+            $color = 'text-dark';
+        }
+        return view('/events/create', compact ('maxpeople', 'people'));
+    }*/
 }
