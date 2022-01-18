@@ -20,7 +20,7 @@ class Events extends Model
         'url',
         'showSlider',
         'date',
-        'time',
+        // 'time',
         'description',
         'people',
     ];
@@ -50,7 +50,7 @@ class Events extends Model
     {
         $user = User::find($userId);
         if($user->isSubscribed($this) || $this->isFull() ) return false;
-        
+
         $this->students()->attach($user);
         return true;
     }
@@ -60,12 +60,14 @@ class Events extends Model
         $user = User::find($userId);
         $this->students()->detach($user);
     }
-/*
-    public function wantsToApply()
-    {
-        return $this->belongsToMany(User::class, 'students');
-    }
-*/
+
+    /*
+        public function wantsToApply()
+        {
+            return $this->belongsToMany(User::class, 'students');
+        }
+    */
+
     public function countStudents()
     {
         return $this->students()->count();
