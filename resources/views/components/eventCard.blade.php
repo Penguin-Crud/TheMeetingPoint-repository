@@ -13,13 +13,20 @@
         </div>
         <p class="card-text">{{ $itemEvent->description }}</p>
         <div class="d-flex justify-content-between">
+          @auth
           @if (Auth::user()->isSubscribed($itemEvent))  
-          <button class="bg-danger text-white">You have Subscribed</button>    
-          @else
+          <button class="bg-danger text-white">You have Subscribed</button> 
+          @else 
+          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
+            <button class="bg-warning text-white">Subscribe</button>
+          </a>  
+          @endif
+          @endauth
+          @guest
           <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
             <button class="bg-warning text-white">Subscribe</button>
           </a>
-          @endif
+          @endguest
           <p class="{{($itemEvent->isFull())?'text-danger': 'text-secondary'}}">Persons : {{$itemEvent->countStudents()}} / {{ $itemEvent->people }}</p>
         </div>
         <div class="d-flex justify-content-center align-items-center flex-column">

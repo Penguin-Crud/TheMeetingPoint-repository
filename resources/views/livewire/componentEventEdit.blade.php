@@ -53,7 +53,7 @@
 
                   $peopleSubs>=$maxPeople ? $color='text-danger' : $color='text-dark';
               @endphp
-              <p class="card-text {{$color}}" >persons : {{$peopleSubs}} / {{  $maxPeople  }}</p>
+              <p class="card-text {{$color}}" >persons :  {{$event->countStudents()}} / {{  $maxPeople  }}</p>
             </div> 
     
             <div class="d-flex justify-content-center align-items-center flex-column">
