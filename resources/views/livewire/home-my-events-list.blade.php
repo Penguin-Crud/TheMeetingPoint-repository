@@ -1,6 +1,6 @@
 <div>
     <div style="width:100%">
-      <h2 style="color:white ;font-size: 3em; display:flex; justify-content: center">Events</h2>
+      <h2 class="mt-3" style="color:white ;font-size: 3em; display:flex; justify-content: center">Events</h2>
     </div>
     <div class="album py-5">
       <div class="container">
