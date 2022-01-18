@@ -29,15 +29,15 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function allowEvent(Events $event)
+    public function allowEvent($id)
     {   
-        // $event = Events::find($id);
+        $event = Events::find($id);
         $user = Auth::user();
         if(!$event->addStudent($user->id)) return redirect('home');
         
-     //   Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
+        // Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
         
-        return redirect('home');
+        return redirect('home'); 
     }
 
 }

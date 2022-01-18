@@ -21,7 +21,7 @@
           @if (Auth::user()->isSubscribed($itemEvent))  
             <button class="bg-danger text-white">You have Subscribed</button> 
           @else 
-            <form action="{{ route('allowevent', ['event' => $itemEvent->id ]) }}" method="POST" >
+            <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
               @csrf
               <button class="bg-warning text-white">Suscribe</button>
             </form> 

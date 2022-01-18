@@ -33,8 +33,8 @@ Route::post('/events', [EventsController::class, 'store'])->name('events.store')
 Route::delete('/myevents/{id}', [HomeMyEventsList::class, 'detach'])->name('myevents.destroy')->middleware('auth');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-//Route::get('/allowevent/{events}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
-Route::post('/allowevent/{event}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
+// Route::post('/allowevent/{event}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
+Route::post('/allowevent/{id}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
 
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
