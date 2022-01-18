@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreeventsRequest;
-use App\Http\Requests\UpdateeventsRequest;
 use App\Models\Events;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -24,7 +19,10 @@ class EventsController extends Controller
         $events = Events::all();
         $events = Events::orderBy('date', 'asc')->get();
 
-        return view('landing', ['events' => $events, 'highlightedEvents' => Events::highlightedEvents()]);
+        return view('landing', [
+            'events' => $events, 
+            'highlightedEvents' => Events::highlightedEvents()
+        ]);
     }
 
     /**
@@ -141,14 +139,10 @@ class EventsController extends Controller
      */
     public function destroy($id)
     {
-        // Events::destroy($id);
-
         $eventToDelete = Events::findOrFail($id);
-        //Auth::user()->isAdmin
         if (Auth::id() != $eventToDelete->author->id) {
             return back();
         };
-
         $eventToDelete->delete();
 
         return back();

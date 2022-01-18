@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -18,6 +17,8 @@ class SubscribingEvent extends Mailable
      */
     public $event;
     public $user;
+
+    
     public function __construct( $user,  $event)
     {
         $this->user = $user;

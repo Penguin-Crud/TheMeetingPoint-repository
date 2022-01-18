@@ -3,24 +3,17 @@
 namespace App\Http\Livewire;
 
 use App\Models\Events;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use mysqli;
 
 class HomeMyEventsList extends Component
 {
     public $myEvents;
     
 
-    public function mount() {
-        
-        $this->myEvents = Auth::user()->myJoinedEvents;
-        // $this->myEvents = Events::all();
-    }
-    public function render()
+    public function mount() 
     {
-        return view('livewire.home-my-events-list');
+        $this->myEvents = Auth::user()->myJoinedEvents;
     }
 
     public function detach($id)
@@ -29,7 +22,10 @@ class HomeMyEventsList extends Component
         $unsubMyEvent->removeStudent(auth()->user()->id);
 
         $this->myEvents = Auth::user()->myJoinedEvents;
-
-        // dd("hello");
     }
+
+    // public function render()
+    // {
+    //     return view('livewire.home-my-events-list');
+    // }
 }

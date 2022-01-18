@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Events;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class Componenteventedit extends Component
@@ -16,7 +14,6 @@ class Componenteventedit extends Component
     public $people;
     public $date;
     public $time;
-
 
     public $url;
     use WithFileUploads;

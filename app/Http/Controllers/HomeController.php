@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SubscribingEvent;
 use App\Models\Events;
-use Illuminate\Console\Scheduling\Event;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -32,9 +29,9 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function allowEvent($id)
+    public function allowEvent(Events $event)
     {   
-        $event = Events::find($id);
+        // $event = Events::find($id);
         $user = Auth::user();
         if(!$event->addStudent($user->id)) return redirect('home');
         
