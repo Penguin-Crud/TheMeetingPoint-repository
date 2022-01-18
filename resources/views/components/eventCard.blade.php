@@ -17,15 +17,17 @@
           @if (Auth::user()->isSubscribed($itemEvent))  
           <button class="bg-danger text-white">You have Subscribed</button> 
           @else 
-          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
-            <button class="bg-warning text-white">Subscribe</button>
-          </a>  
+          <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
+            @csrf
+            <button class="bg-warning text-white">Suscribe</button>
+          </form> 
           @endif
           @endauth
           @guest
-          <a href="{{ route('allowevent', ['events' => $itemEvent->id ]) }}">
-            <button class="bg-warning text-white">Subscribe</button>
-          </a>
+          <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
+            @csrf
+            <button class="bg-warning text-white">Suscribe</button>
+          </form>
           @endguest
           <p class="{{($itemEvent->isFull())?'text-danger': 'text-secondary'}}">Persons : {{$itemEvent->countStudents()}} / {{ $itemEvent->people }}</p>
         </div>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscribingEvent;
 use App\Models\Events;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -30,35 +32,15 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function allowEvent(Events $events) // lo verde identifica que el parametro encuentra relacion con un model existente con el mismo nombre
+    public function allowEvent($id)
     {   
-        $myEventsList = Auth::user()->myJoinedEvents;
-
-        foreach ($myEventsList as $myEvent ) {
-            if ($events->id == $myEvent->id)
-            {
-                return redirect('home') ;
-            }
-        }
+        $event = Events::find($id);
+        $user = Auth::user();
+        if(!$event->addStudent($user->id)) return redirect('home');
         
-        $events->addStudent(auth()->user()->id);
+     //   Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
         
-        // dd($myEventsList[0]->id);
-        // dd($events->id);
-
-        // $list = [];
-        // $user_id = Auth()->user()->id;
-
-        // $allowEventsList = DB::table('students')->where('user_id', $user_id)->get();
-
-        // foreach ($allowEventsList as $itemAllowEvent) {
-        //     $id = $itemAllowEvent->events_id;
-        //     $x = Events::where('id', $id)->get();
-        //     array_push($list, $x);
-        // }
-
         return redirect('home');
     }
 
-    
 }
