@@ -24,7 +24,6 @@ class SubscribingEventTest extends TestCase
         $user = User::factory()->create();
         $event = Events::factory()->create();
         
-
         $subscribeEvent = new SubscribingEvent($user, $event);
     
         $subscribeEvent->assertSeeInHtml($user->name);

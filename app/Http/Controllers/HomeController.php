@@ -38,7 +38,7 @@ class HomeController extends Controller
         $user = Auth::user();
         if(!$event->addStudent($user->id)) return redirect('home');
         
-        Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
+     //   Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
         
         return redirect('home');
     }
