@@ -54,12 +54,9 @@
     }
 
     .carousel-item {
-      height: 75vh;
+      height: 80vh;
       min-height: 300px;
-      background: no-repeat center center scroll;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
+      background-repeat: no-repeat;
       background-size: cover;
     }
     
@@ -81,20 +78,35 @@
     }
     .navbar-btn:hover {
         color: rgb(0, 0, 0) !important;
-        background-color: #6bd0f8 !important;
+        background-color: #ffffff !important;
         border-color: #000000 !important;
+    }
+    .body-bg{
+      background-image: url(../../../../../img/ojo.jpg);
+      background-attachment: fixed;
     }
   </style>
 
   @livewireStyles
     
 </head>
-<body style="background-color: black">
+<body class="body-bg">
   <header style="background-color: #ffc700";>
+    <div class="navbar navbar-dark shadow-sm">
+      <div class="container">
+        <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
+        <img src="../../../img/logo.png" style="width: 70%"/>  
+        </a>
+        <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
+        <button class="navbar-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="../../../img/menu.png" alt="">
+        </button>
+      </div>
+    </div>
     <div class="collapse " style="background-color: #ffc700" id="navbarHeader">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-4 offset-md-1 py-4">
+        <div class="row d-flex justify-content-between">
+          <div class="col-sm-10 offset-md-1 py-4">
             <ul class="list-unstyled">
               <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
@@ -127,7 +139,7 @@
                               {{ Auth::user()->name }}
                         </a>
   
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right bg-warning" aria-labelledby="navbarDropdown">
                             <a class="styleAncors dropdown-item" href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -146,17 +158,6 @@
             </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="navbar navbar-dark shadow-sm">
-      <div class="container">
-        <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
-        <img src="../../../img/logo.png" style="width: 70%"/>  
-        </a>
-        <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
-        <button class="navbar-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="../../../img/menu.png" alt="">
-        </button>
       </div>
     </div>
   </header>
