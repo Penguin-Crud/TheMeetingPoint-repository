@@ -55,3 +55,4 @@ Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.up
 
 //     return $subscribeEvent->render();
 // })->middleware('auth');
+Route::get('/date', [EventsController::class, 'date'])->name('events.date')->middleware('auth');                            
