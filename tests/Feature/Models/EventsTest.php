@@ -86,7 +86,7 @@ class EventsTest extends TestCase
         $user = User::factory()->create();
         $event = Events::factory()->create();
 
-        $this->assertTrue( $event->addStudent($user->id));
+        $this->assertTrue($event->addStudent($user->id));
         $this->assertFalse($event->addStudent($user->id));
 
         $this->assertDatabaseCount('students',1);
