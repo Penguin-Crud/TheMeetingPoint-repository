@@ -85,6 +85,7 @@
       display: block;
     }
     canvas{
+      width: 100%;
       display: block;
       position: fixed;
       top: 0;
@@ -95,6 +96,13 @@
       top: 0;
       z-index: 1;
     }
+    .carousel-control-prev{
+      z-index: 0;  
+    }
+    .carousel-control-next{
+      z-index: 0;
+    }
+
   </style>
 
   @livewireStyles
