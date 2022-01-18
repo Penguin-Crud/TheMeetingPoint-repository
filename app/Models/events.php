@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Events extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'mi_fecha' => 'datetime:Y-m-d',
+        'mi_hora' => 'datetime:H:i:s'
+        ];
 
     protected $fillable = [
         'title',
@@ -32,7 +37,8 @@ class Events extends Model
         $this->save();
     }
 
-    public static function highlightedEvents(){
+    public static function highlightedEvents()
+    {
         return self::where('showSlider', true)->get();
     }
 
@@ -41,10 +47,13 @@ class Events extends Model
         return $this->belongsToMany(User::class, 'students')->withTimestamps();
     }
 
-    public function addStudent($userId)
+    public function addStudent($userId): bool
     {
         $user = User::find($userId);
+        if($user->isSubscribed($this) || $this->isFull() ) return false;
+
         $this->students()->attach($user);
+        return true;
     }
 
     public function removeStudent($userId)
@@ -53,7 +62,14 @@ class Events extends Model
         $this->students()->detach($user);
     }
 
-    public function countStudents(): int
+    /*
+        public function wantsToApply()
+        {
+            return $this->belongsToMany(User::class, 'students');
+        }
+    */
+
+    public function countStudents()
     {
         return $this->students()->count();
     }
@@ -62,6 +78,4 @@ class Events extends Model
     {
         return $this->countStudents() >= $this->people;
     }
-
-
 }

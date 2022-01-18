@@ -1,8 +1,10 @@
-<div class="album py-5">
+<div class="album">
 
-    <div class="container d-flex justify-content-around">
-        <div class="col">
-            <div class="card shadow-sm w-50">
+    <h2 style="color:white ;font-size: 3em;" class="d-flex justify-content-center mt-3">{{ __('Create') }}</h2>
+
+    <div class="container d-flex justify-content-around mt-5">
+        <div class="col-md-4">
+            <div class="card">
               @if ($image)
                 photo preview:
                 <img src="{{  $image->temporaryUrl()  }}" class="bd-placeholder-img card-img-top" width="100%" height="225"  alt="No funciona">

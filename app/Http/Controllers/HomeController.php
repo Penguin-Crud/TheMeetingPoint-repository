@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscribingEvent;
 use App\Models\Events;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -31,23 +32,15 @@ class HomeController extends Controller
         return view('home');
     }
     
-    public function allowEvent(Events $events) // lo verde identifica que el parametro encuentra relacion con un model existente con el mismo nombre
-    {
-        $events->addStudent(auth()->user()->id);
-
-        $list = [];
-        $user_id = Auth()->user()->id;
-
-        $allowEventsList = DB::table('students')->where('user_id', $user_id)->get();
-
-        foreach ($allowEventsList as $itemAllowEvent) {
-            $id = $itemAllowEvent->events_id;
-            $x = Events::where('id', $id)->get();
-            array_push($list, $x);
-        }
-
+    public function allowEvent($id)
+    {   
+        $event = Events::find($id);
+        $user = Auth::user();
+        if(!$event->addStudent($user->id)) return redirect('home');
+        
+     //   Mail::to($user->email)->send(new SubscribingEvent($user, $event));//->queue
+        
         return redirect('home');
     }
 
-    
 }

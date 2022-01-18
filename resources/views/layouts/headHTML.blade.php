@@ -54,12 +54,9 @@
     }
 
     .carousel-item {
-      height: 75vh;
+      height: 80vh;
       min-height: 300px;
-      background: no-repeat center center scroll;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
+      background-repeat: no-repeat;
       background-size: cover;
     }
     
@@ -68,17 +65,59 @@
         font-size: 3.5rem;
       }
     }
+
+    .navbar-btn {
+    border-color: #000000 !important;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    color: rgb(0, 0, 0) !important;
+    background-color: #FFC700;
+    padding: 6px 12px !important;
+    margin: 0px 0px 0px 10px;
+    }
+    .navbar-btn:hover {
+        color: rgb(0, 0, 0) !important;
+        background-color: #ffffff !important;
+        border-color: #000000 !important;
+    }
+    html,body{
+      display: block;
+    }
+    canvas{
+      display: block;
+      position: fixed;
+      top: 0;
+      z-index: -1;
+    }
+    .header-position{
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
   </style>
 
   @livewireStyles
     
 </head>
-<body style="background-color: black">
-  <header style="background-color: #FFC700";>
-    <div class="collapse " id="navbarHeader">
+<body>
+  <canvas id="canvas"></canvas>
+  <header class="header-position" style="background-color: #ffc700";>
+    <div class="navbar navbar-dark shadow-sm">
       <div class="container">
-        <div class="row">
-          <div class="col-sm-4 offset-md-1 py-4">
+        <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
+        <img src="../../../img/logo.png" style="width: 70%"/>  
+        </a>
+        <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
+        <button class="navbar-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="../../../img/menu.png" alt="">
+        </button>
+      </div>
+    </div>
+    <div class="collapse " style="background-color: #ffc700" id="navbarHeader">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-sm-10 offset-md-1 py-4">
             <ul class="list-unstyled">
               <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
@@ -111,7 +150,7 @@
                               {{ Auth::user()->name }}
                         </a>
   
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right bg-warning" aria-labelledby="navbarDropdown">
                             <a class="styleAncors dropdown-item" href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -132,19 +171,8 @@
         </div>
       </div>
     </div>
-    <div class="navbar navbar-dark shadow-sm">
-      <div class="container">
-        <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
-        <img src="../../../img/logo.png" style="width: 70%"/>  
-        </a>
-        <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </div>
   </header>
-
+  
   @auth
     <nav>
       
@@ -165,9 +193,50 @@
       <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
       <p class="mb-0">New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
     </div>
-  </footer> --}}
-
+  </footer> --}}  
   <script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
+  <script type="text/javascript">
+    //Fuente Original :  http://timelessname.com/sandbox/matrix.html
+    //Configura el canvas para que ocupe la pantalla entera 
+    canvas.height = window.screen.height;
+    canvas.width = window.screen.width;
+
+    // una entrada en el array por columna de texto
+    //cada valor represnta la posición y actual de la columna.  (en canvas 0 es en la parte superior y los valores positivos de y van disminuyendo)
+    var columns = []
+    for (i = 0; i < 256; columns[i++] = 1);
+
+    //ejecutado una vez por fotograma
+    function step() {
+        //Ligeramente oscurece todo el canvas dibujando un rectángulo negro casi trasnsparente sobre todo el canvas
+        /*esto explica tanto el flash inicial de blanco a negro (por defecto el canvas es blanco y progresivamente se convierte en negro) como el fading de los caracteres.*/
+        canvas.getContext('2d').fillStyle = 'rgba(0,0,0,0.05)';
+        canvas.getContext('2d').fillRect(0, 0, canvas.width, canvas.height);
+        
+        //verde
+        canvas.getContext('2d').fillStyle = '#0F0';
+        //para cada clolumna
+        columns.map(function (value, index) {
+            //fromCharCode convierte puntos de código unicode ( http://en.wikipedia.org/wiki/Code_point ) a un string
+            //Los code points están en el rango 30000-30032 (0x7530-0x7550) (田-畐)
+            //que está incluido en el bloque de ideogramas unificado CJK ( http://en.wikipedia.org/wiki/CJK_Unified_Ideographs )
+            var character = String.fromCharCode(9e10 +
+                                                Math.random() * 33);
+            //dibujar el carácter
+            canvas.getContext('2d').fillText(character, //texto
+                                            index * 10, //x
+                                            value //y
+                                            );
+            
+            //desplaza hacia abajo el carácter
+            //si el carácter es menor de 758 entonces hay una posibilidad aleatoria de que sea reseteado
+            columns[index] = value > 758 + Math.random() * 1e4 ? 0 : value + 10
+        })
+    }
+
+    //1000/33 = ~30 veces por segundo
+    setInterval(step, 33)
+  </script>
   @livewireScripts
   
 </body>

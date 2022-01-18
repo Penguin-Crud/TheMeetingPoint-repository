@@ -44,8 +44,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-
     public function events() {
         return $this->hasMany(Event::class);
     }
@@ -80,5 +78,10 @@ class User extends Authenticatable
     public function setTimeZoneAttribute($value)
     {
         $this->attributes['timezone'] = $value == config('app.timezone') || is_null($value) ? null : $value;
+    }
+
+    public function isSubscribed(Events $event): bool
+    {
+        return $this->myJoinedEvents->contains($event);
     }
 }

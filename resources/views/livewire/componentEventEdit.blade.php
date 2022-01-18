@@ -1,9 +1,12 @@
 <div>
-  <div class="album py-5">
-    <div class="container d-flex jutify-content-around">
+  <div class="album">
 
-      <div class="col">
-        <div class="card shadow-sm w-50">
+    <h2 style="color:white ;font-size: 3em;" class="d-flex justify-content-center mt-3">{{ __('Edit') }}</h2>
+
+    <div class="container d-flex justify-content-around mt-5">
+
+      <div class="col-md-4">
+        <div class="card">
          
           @if (!$image)
             photo preview:
@@ -53,7 +56,7 @@
 
                   $peopleSubs>=$maxPeople ? $color='text-danger' : $color='text-dark';
               @endphp
-              <p class="card-text {{$color}}" >persons : {{$peopleSubs}} / {{  $maxPeople  }}</p>
+              <p class="card-text {{$color}}" >persons :  {{$event->countStudents()}} / {{  $maxPeople  }}</p>
             </div> 
     
             <div class="d-flex justify-content-center align-items-center flex-column">
@@ -67,47 +70,61 @@
         </div>
       </div>
       
-
-      <form action="{{route('events.update', ['id' => $event->id ])}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        
-        <div id="inputImagee" class="form-group d-flex flex-row align-items-center mb-5">
-          <label for="ImgURL" class="me-3 text-white">Image:  </label>
+      <div class="rounded-3" style="background-color: rgba(255, 255, 255, 0.918)">
+        <form action="{{route('events.update', ['id' => $event->id ])}}" method="POST" enctype="multipart/form-data" class="row justify-content-center flex-column m-4">
+          @csrf
+          @method('PUT')
           
-          <input  wire:model="image" type="file" name="image" class="text-white" accept="image/*">
-          
-          @error('image')
-              <small class="text-danger"> {{ $message }} </small>
-          @enderror
-        </div>
+          <div id="inputImagee" class="form-group d-flex flex-row align-items-center mb-5">
+            <label for="ImgURL" class="me-3 text">Image:  </label>
+            
+            <input  wire:model="image" type="file" name="image" class="text" accept="image/*">
+            
+            @error('image')
+                <small class="text-danger"> {{ $message }} </small>
+            @enderror
+          </div>
 
-        <div class="form-group d-flex flex-row align-items-center">
-          <label for="title" class="me-3 text-right text-white">TITLE: </label>
-          <input wire:model="title" type="text" value="{{$event->title}}" name="title" class="form-control" id="title" >
-        </div>
-        <div class="form-group d-flex flex-row align-items-center mb-3">
-          <label for="description" class="me-3 text-right text-white">Description:  </label>
-          <input wire:model="description" name='description' value="{{$event->description}}" type="text" class="form-control" id="description" >
-        </div>
+          <div class="form-group d-flex flex-row justify-content-center mb-2">
+            <label for="title" class="me-5 text">Title:  </label>
+            <div class="col-md-10">
+              <input wire:model="title" type="text" value="{{$event->title}}" name="title" class="form-control border-dark border-1 ms-2" id="title" >
+            </div>
+          </div>
+          <div class="form-group d-flex flex-row justify-content-center mb-2">
+            <label for="description" class="me-3 text">Description:  </label>
+            <div class="col-md-10">
+              <input wire:model="description" name='description' value="{{$event->description}}" type="text" class="form-control border-dark border-1" id="description" >
+            </div>
+          </div>
 
-        <div class="form-group d-flex flex-row align-items-center">
-          <label for="people" class="me-3 text-right text-white">MaxPeople:  </label>
-          <input wire:model="people" name='people' value="{{$event->people}}" type="text" class="form-control" id="people" >
-        </div>
-        <div class="form-group d-flex flex-row align-items-center">
-          <label for="date" class="me-3 text-right text-white">aaaa/dd/mm:  </label>
-          <input wire:model="date" name='date' value="{{$event->date}}" type="text" class="form-control" id="date" >
-        </div>
-        <div class="form-group d-flex flex-row align-items-center">
-          <label for="time" class="me-3 text-right text-white">hh:mm:  </label>
-          <input wire:model="time" name='time' value="{{$event->time}}" type="text" class="form-control" id="time" >
-        </div>
+          <div class="form-group d-flex flex-row justify-content-center mt-4 mb-2">
+            <label for="people" class="me-3 text-primary">MaxPeople:  </label>
+            <div class="col-md-10">
+              <input wire:model="people" name='people' value="{{$event->people}}" type="text" class="form-control border-dark border-1" id="people" >
+            </div>
+          </div>
+          <div class="form-group d-flex flex-row justify-content-center mb-2">
+            <label for="date" class="me-1 text">aaaa/dd/mm:  </label>
+            <div class="col-md-10">
+              <input wire:model="date" name='date' value="{{$event->date}}" type="text" class="form-control border-dark border-1" id="date" >
+            </div>
+          </div>
+          <div class="form-group d-flex flex-row justify-content-center mb-2">
+            <label for="time" class="me-5 text">hh:mm:  </label>
+            <div class="col-md-10">
+              <input wire:model="time" name='time' value="{{$event->time}}" type="text" class="form-control border-dark border-1" id="time" >
+            </div>
+          </div>
 
-        <button type="submit" class="btn btn-primary mb-2">SUBMIT</button>
+          <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-warning border-dark border-1">Submit</button>
+          </div>
 
-      </form>
-
+        </form>
+      </div>
     </div>
   </div>
+  {{-- datetime-local --}}
 </div>
+

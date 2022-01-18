@@ -6,6 +6,12 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Componenteventedit;
 use App\Http\Controllers\SliderController;
+use App\Http\Livewire\HomeMyEventsList;
+use App\Mail\NotificationsMailable;
+use App\Mail\SubscribingEvent;
+use App\Models\Events;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +30,11 @@ Route::get('/', [EventsController::class, 'index'])->name('landing');
 
 Route::get('/events/create', [EventsController::class, 'create'])->name('events.create')->middleware('auth');
 Route::post('/events', [EventsController::class, 'store'])->name('events.store');
-Route::delete('/myevents/{id}', [EventsController::class, 'destroy'])->name('myevents.destroy')->middleware('auth');
+Route::delete('/myevents/{id}', [HomeMyEventsList::class, 'detach'])->name('myevents.destroy')->middleware('auth');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/allowevent/{events}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
+//Route::get('/allowevent/{events}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
+Route::post('/allowevent/{id}', [HomeController::class, 'allowEvent'])->name('allowevent')->middleware('auth');
 
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
@@ -38,3 +45,14 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 
 Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');                            
+
+// Route::get('/notify/{eventId}', function($eventId)
+// {
+//     $user = Auth::user();
+//     $event = Events::find($eventId);
+//     $subscribeEvent = new SubscribingEvent($user, $event);
+//     Mail::to($user->email)->send($subscribeEvent);
+
+//     return $subscribeEvent->render();
+// })->middleware('auth');
+Route::get('/date', [EventsController::class, 'date'])->name('events.date')->middleware('auth');                            
