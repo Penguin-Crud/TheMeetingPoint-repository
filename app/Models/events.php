@@ -61,15 +61,15 @@ class Events extends Model
         $user = User::find($userId);
         $this->students()->detach($user);
     }
-
+/*
     public function wantsToApply()
     {
         return $this->belongsToMany(User::class, 'students');
     }
-
+*/
     public function countStudents()
     {
-        return $this->wantsToApply()->count();
+        return $this->students()->count();
     }
 
     public function isFull(): bool
