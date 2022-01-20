@@ -34,21 +34,11 @@
 
                 </div>
 
-              <div class="btn-group mt-2">
-                {{-- <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST" class="me-1" style="width: 6vw">
-                  @csrf --}}
-                  <button type="submit" class="btn btn-sm btn-outline-secondary text-white bg-danger w-100">Delete</button>
-                  {{-- @method('DELETE')
-                </form> --}}
 
-                {{-- <a href="{{route('events.edit', ['id' => $itemEvent->id])}}" class="ms-1" style="width: 6vw"> --}}
-                  <button type="button" class="btn btn-sm btn-outline-secondary text-white w-100" style="background-color: blue">Edit</button>
-                {{-- </a> --}}
-              </div>
 
             </div>
 
-          </div>
+
         </div>
       </div>
 
@@ -57,14 +47,9 @@
             @csrf
 
             <div class="form-group d-flex flex-row align-items-center mb-5">
-<<<<<<< HEAD
-              <label for="ImgURL" class="me-3 text-white">Image:  </label>
-=======
               <label for="ImgURL" class="me-3 text">Image:  </label>
-              {{-- <input name='image' type="url" class="form-control" id="ImgURL" > --}}
->>>>>>> master
 
-              <input class="text-white" wire:model="image" type="file" name="image" id="" accept="image/*">
+              <input class="text" wire:model="image" type="file" name="image" id="" accept="image/*">
 
               @error('image')
                   <small class="text-danger"> {{ $message }} </small>
@@ -87,33 +72,14 @@
             </div>
 
 
-<<<<<<< HEAD
             <div class="form-group d-flex flex-row align-items-center">
-              <label for="people" class="me-3 text-white">MaxPeople:  </label>
+              <label for="people" class="me-3 text">MaxPeople:  </label>
               <input wire:model="people" name='people' type="text" class="form-control" id="people" >
             </div>
             <div class="form-group d-flex flex-row align-items-center">
-              <label for="date" class="me-3  text-white">dd/mm/aa:  </label>
+              <label for="date" class="me-3  text">dd/mm/aa:  </label>
               <input wire:model="date" name='date' type="datetime-local" class="form-control" id="date" >
             </div>
-=======
-            <div class="form-group d-flex flex-row justify-content-center mb-2">
-              <label for="people" class="me-3 text">MaxPeople:  </label>
-              <div class="col-md-10">
-                <input wire:model="people" name='people' type="text" class="form-control border-dark border-1" id="people" >
-              </div>
-            </div>
-            <div class="form-group d-flex flex-row justify-content-center mb-2">
-              <label for="date" class="me-3  text">dd/mm/aa:  </label>
-              <div class="col-md-10">
-                <input wire:model="date" name='date' type="datetime-local" class="form-control border-dark border-1" id="date" >
-              </div>
-            </div>
-            {{-- <div class="form-group d-flex flex-row align-items-center">
-              <label for="time" class="me-3 text-white">Time:  </label>
-              <input wire:model="time" name='time' type="text" class="form-control" id="time" >
-            </div> --}}
->>>>>>> master
 
             <div class="d-flex justify-content-center mt-4">
               <button type="submit" class="btn btn-warning border-dark border-1">Submit</button>
