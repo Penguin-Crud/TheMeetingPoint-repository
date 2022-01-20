@@ -111,34 +111,87 @@ Si no lo tienes vas a necesitar instalar global o localmente Composer(Link a la 
 
 Si no lo tienes vas a necesitar instalar global o localmente Nodejs(Link a la pagina <a style="color:#00F520" href="https://nodejs.org/es/">Nodejs</a>). Este comando te creara la carpeta nodemodules.
 
-Ademas para conectar con la base de datos que tenemos en PhpMyAdmin debes crear un base de datos que se llame "consultas_cto" e importar el archivo que se encuentra en la carpeta "tablas", este archivo contiene las tablas que se necesitan en este projecto. les dejamos unos videos informativos a continuacion:
+<br>
+<br>
+
+
+>composer require livewire/livewire
+
+<br>
+
+<p align="center"><a href="https://laravel-livewire.com/" target="_blank"><img src="https://www.freewebsolution.it/wp-content/uploads/2021/05/guida-livewire-laravel.jpg" width="400"></a></p>
+
+Este comando sirve para poder ver los componentes que estan a travez de <a style="color:#D758C1" href="https://laravel-livewire.com/">Livewire</a> (Link a la pagina de livewire/laravel)
+
+<br>
+<br>
+
+>php artisan storage:link
+
+<br>
+
+Este comando sirve para tener un acceso directo a los archivos temporales. 
+
+<br>
+
+Antes de seguir con los comandos debemos crear un archivo que se llame ".env" tal cual se ve en l suiguien imagen. Este archivo va a ser el encargado de hacer la conexion con la base de datos.
+
+<img src="public/img/env.png">
+
+Dentro de este archivo va a ir lo que contiene el archivo de texto conexionDB.txt. Una vez tengas copiado el texto que contiene en el ".env" vas a tener que haver los siguientes cambios:
+
+<img src="public/img/configDB.png">
+
+<br>
+
+En el apartado DB_PORT vas a tener que tener que poner el puerto que contenga tu servidor XAMP, MAMP o LAMP.
+
+En el apartado DB_DATABASE vas a tener que poner el nombre del archivo que tengas en tu base de datos o en todo caso crear una base de datos con este nombre "ui_point". Les dejamos un video informativo a continuacion:
 
 Crear base de datos y tablas:<a href="https://www.youtube.com/watch?v=xgltfvAkZaE">Base de datos</a>
 
-Importar un tabla a PhpMyAdmin:<a href="https://www.youtube.com/watch?v=EZfiJu5qFMM">Tablas</a> 
+En el apartado DB_PASSWORD si tienes Windows el password por defecto seria un string vacio y si tienes mac el password seria "root".
 
-Por ultimo se debe crear un archivo con el nombre "Config.php" en la carpeta Core y copiar el siguinte codigo:
+Una vez conectado con la base vamos a hacer la migracion de las factorias y seeders que contiene el proyecto a travez del siguiente comando:
 
-<img src="public/"> 
+<br>
 
-Si tienes Windows la pass por defecto seria un string vacio y si tienes mac la pass seria "root".
+>php artisan migrate:fresh --seed
 
-<img src="public/">
+<br>
+
+Y por ultimo los 2 comandos para ver el proyecto en tu navegador:
+
+<br>
+
+>php artisan serve
+
+<br>
+
+Este comando te dara un servidor de desarrollo laravel donde vas a poder ir viendo tus cambios.
+
+<br>
+
+>npm run watch
+
+<br>
+
+Este comando te va a permitir ver tus cambios en lo que se refiere a estilos de css o bootstrap.
 
 <h2>Construido con 🛠️</h2>
   
 <ul>
   <li><a href="https://trello.com/">Trello</a> - Kanban o gestor de proyectos</li>
   
-  <li><a href="https://www.figma.com/">Figma</a> - Programa para diseñar el proyecto (Wireframe y Mockup)</li>
+  <li><a style="color:#7500D6" href="https://www.figma.com/">Figma</a> - Programa para diseñar el proyecto (Wireframe y Mockup)</li>
   
-  <li><a href="https://www.flaticon.com/">Flaticon</a> - Bancos de iconos</li>
+  <li><a style="color:#0EF477" href="https://www.flaticon.com/">Flaticon</a> - Bancos de iconos</li>
   
-  <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> - Editor de codigo</li>
+  <li><a style="color:#0C41EA" href="https://code.visualstudio.com/">Visual Studio Code</a> - Editor de codigo</li>
 
-  <li><a href="https://www.apachefriends.org/es/index.html">XAMPP</a> - Servidor independiente de software libre</li>
+  <li><a style="color:#F58602" href="https://www.apachefriends.org/es/index.html">XAMPP</a> - Servidor independiente de software libre</li>
   
-  <li><a href="https://github.com/">GitHub</a> - Repositorio online</li>
+  <li><a style="color:#2313F5" href="https://github.com/">GitHub</a> - Repositorio online</li>
 </ul>
 
 <h2>Autores ✒️</h2>
@@ -153,7 +206,7 @@ Integrantes y roles dentro del proyecto:
 
   <li>Felicia Folatimilehin - Scrum Team - <a href="https://github.com/timfel20">timfel20</a></li>
   
-  <li>Sergi Fuentes - Scrum Team - <a href="https://github.com/SergiFuentes">SergiFuentes</a></li>
+  <li>Facundo Ramallo - Scrum Team - <a href="https://github.com/FacuRamallo">Facu Ramallo</a></li>
   
   <li>Biplop Dey - Scrum Team - <a href="https://github.com/biplopdey">biplopdey</a></li>
 
@@ -162,8 +215,6 @@ Integrantes y roles dentro del proyecto:
   <li>Lucas Martinez - Product Owner - <a href="https://github.com/LucasMartinez69">LucasMartinez69</a></li>
 
 </ul>
-
-Este grupo fue la fusion de 2 grupos y la siguiente imagen lo representa.
 
 <img src="public/">
 
