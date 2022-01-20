@@ -159,18 +159,4 @@ class EventsController extends Controller
         $events = Events::orderBy('date', 'asc')->get();
 
     }
-
-    /* public function changeTextColor()
-    {
-        $maxpeople = 'people';
-        $maxpeople = 23;
-        $people = 0;
-
-        if ($people >= $maxpeople) {
-            $color = 'text-danger';
-        } else if ($people <= $maxpeople) {
-            $color = 'text-dark';
-        }
-        return view('/events/create', compact ('maxpeople', 'people'));
-    }*/
 }
