@@ -60,15 +60,17 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <label class="required" for="timezone">{{ __('TimeZone') }}</label>
-                            <select class="form-control" name="timezone" id="timezone">
-                                @foreach(Helpers::getTimeZoneList() as $timezone => $timezone_gmt_diff)
-                                    <option value="{{ $timezone }}" >
-                                        {{ $timezone_gmt_diff }}
-                                    </option>
-                                @endforeach
-                            </select>
+                        <div class="mb-3 d-flex flex-row justify-content-center">
+                            <label class="required col-md-2 col-form-label text-md-right text-white" for="timezone">{{ __('TimeZone :') }}</label>
+                            <div class="col-md-6 ms-2">
+                                <select class="form-control" name="timezone" id="timezone">
+                                    @foreach(Helpers::getTimeZoneList() as $timezone => $timezone_gmt_diff)
+                                        <option value="{{ $timezone }}" >
+                                            {{ $timezone_gmt_diff }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row mb-0">

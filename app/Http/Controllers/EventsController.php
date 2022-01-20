@@ -158,5 +158,8 @@ class EventsController extends Controller
     {
         $events = Events::orderBy('date', 'asc')->get();
 
+<<<<<<< HEAD
     }
+=======
+>>>>>>> master
 }

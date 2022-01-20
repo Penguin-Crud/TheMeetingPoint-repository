@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventsController;
@@ -55,4 +56,7 @@ Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.up
 
 //     return $subscribeEvent->render();
 // })->middleware('auth');
+Route::get('api/event/{event}', [ApiController::class, 'apiGetEvent'])->name('events.api.item');
+Route::get('api/events', [ApiController::class, 'apiGetAllEvents'])->name('events.api.all');
+
 Route::get('/date', [EventsController::class, 'date'])->name('events.date')->middleware('auth');                            
