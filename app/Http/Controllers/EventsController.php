@@ -161,13 +161,4 @@ class EventsController extends Controller
         dd($events);
     }
 
-    public function apiGetEvent(Events $event)
-    {
-        return $event;
-    }
-    public function apiGetAllEvents()
-    {
-        return Events::all();
-    }
-
 }
