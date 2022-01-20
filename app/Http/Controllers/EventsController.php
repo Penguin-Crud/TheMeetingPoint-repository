@@ -157,9 +157,5 @@ class EventsController extends Controller
     public function date(Request $request)
     {
         $events = Events::orderBy('date', 'asc')->get();
-
-<<<<<<< HEAD
     }
-=======
->>>>>>> master
 }
