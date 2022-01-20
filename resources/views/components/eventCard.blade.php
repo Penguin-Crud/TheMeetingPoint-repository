@@ -16,27 +16,36 @@
         <p class="card-text">{{ $itemEvent->description }}</p>
 
         <div class="d-flex justify-content-between">
-          @auth
+            @auth
+                @if ($itemEvent->isEventExpired())
+                    <button class="btn-secondary text-white">Event Expired</button>
+                @else
+                    @if (Auth::user()->isSubscribed($itemEvent))
+                        <button class="bg-danger text-white">You are Subscribed</button>
+                    @else
+                        <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
+                        @csrf
+                        <button class="bg-warning text-white">Suscribe</button>
+                        </form>
+                    @endif
 
-          @if (Auth::user()->isSubscribed($itemEvent))
-            <button class="bg-danger text-white">You have Subscribed</button>
-          @else
-            <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
-              @csrf
-              <button class="bg-warning text-white">Suscribe</button>
-            </form>
-          @endif
-
-          @endauth
+                @endif
 
 
-          @guest
-            <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
-              @csrf
-              <button class="bg-warning text-white">Suscribe</button>
-            </form>
-          @endguest
-          <p class="{{($itemEvent->isFull())?'text-danger': 'text-secondary'}}">Persons : {{$itemEvent->countStudents()}} / {{ $itemEvent->people }}</p>
+            @endauth
+
+
+            @guest
+            @if ($itemEvent->isEventExpired())
+                <button class="btn-secondary text-white">Event Expired</button>
+            @else
+                <form action="{{ route('allowevent', ['id' => $itemEvent->id ]) }}" method="POST" >
+                @csrf
+                <button class="bg-warning text-white">Suscribe</button>
+                </form>
+            @endif
+            @endguest
+            <p class="{{($itemEvent->isFull())?'text-danger': 'text-secondary'}}">Persons : {{$itemEvent->countStudents()}} / {{ $itemEvent->people }}</p>
 
         </div>
 
