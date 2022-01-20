@@ -99,7 +99,7 @@
           </div>
 
           <div class="form-group d-flex flex-row justify-content-center mt-4 mb-2">
-            <label for="people" class="me-3 text-primary">MaxPeople:  </label>
+            <label for="people" class="me-3 text">MaxPeople:  </label>
             <div class="col-md-10">
               <input wire:model="people" name='people' value="{{$event->people}}" type="text" class="form-control border-dark border-1" id="people" >
             </div>
