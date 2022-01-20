@@ -161,17 +161,13 @@ class EventsController extends Controller
         dd($events);
     }
 
-    /* public function changeTextColor()
+    public function apiGetEvent(Events $event)
     {
-        $maxpeople = 'people';
-        $maxpeople = 23;
-        $people = 0;
+        return $event;
+    }
+    public function apiGetAllEvents()
+    {
+        return Events::all();
+    }
 
-        if ($people >= $maxpeople) {
-            $color = 'text-danger';
-        } else if ($people <= $maxpeople) {
-            $color = 'text-dark';
-        }
-        return view('/events/create', compact ('maxpeople', 'people'));
-    }*/
 }
