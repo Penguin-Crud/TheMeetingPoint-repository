@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use App\Helpers\Helpers;
 
 class Events extends Model
 {
@@ -20,7 +22,6 @@ class Events extends Model
         'url',
         'showSlider',
         'date',
-        // 'time',
         'description',
         'people',
     ];
@@ -76,5 +77,25 @@ class Events extends Model
     public function isFull(): bool
     {
         return $this->countStudents() >= $this->people;
+    }
+
+    public function setUserTime(){
+        $this->date = Carbon::parse($this->date)->setTimezone(Helpers::getUserTimeZone());
+    }
+
+    public function isEventExpired(){
+        $today = Carbon::now();
+        if ($this->date <= $today ) return true;
+        return false;
+    }
+
+    public static function getOnTimeEvents(){
+        $today = Carbon::now();
+        return self::where('date','>', $today)->orderBy('date', 'asc')->get();
+    }
+
+    public static function getTimeOutedEvents(){
+        $today = Carbon::now();
+        return self::where('date','<=', $today)->orderBy('date', 'asc')->get();
     }
 }
