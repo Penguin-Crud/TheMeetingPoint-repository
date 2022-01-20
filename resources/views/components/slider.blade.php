@@ -6,11 +6,11 @@
         <img src="{{$events[0]->image}}" class="d-block w-100" alt="Highlighted event {{$events[0]->title}}">
       </div>
     @endif
-    
+
     @for ($i = 1; $i < count($events); $i++)
-    <div class="carousel-item" style="">
-      <img src="{{$events[$i]->image}}" class="d-block w-100" style="object-fit: cover; object-position: 100% 100%" alt="Highlighted event {{$events[$i]->title}}">
-    </div>
+        <div class="carousel-item" style="">
+            <img src="{{$events[$i]->image}}" class="d-block w-100" style="object-fit: cover; object-position: 100% 100%" alt="Highlighted event {{$events[$i]->title}}">
+        </div>
     @endfor
 
   </div>

@@ -12,40 +12,24 @@
               <div class="card-body">
                 <div class="d-flex justify-content-between">
                   <p class="card-text" style="font-weight:bold">{{  $title  }}</p>
-                  <div class="d-flex justify-content-between">
-                    @php
-                      $expdate=2022-12-12;
-                      if ($date>$expdate) {$color='text-danger';}
-                      if ($date<$expdate) {$color='text-dark';}
-                    @endphp
-                    <p class="card-text {{$color}}">{{  $date  }}</p>
-                    <p class="card-text ms-2{{$color}}">{{  $time  }}</p>
-                  </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">{{  $date  }}</p>
+                    </div>
                 </div>
                 <p class="card-text">{{  $description }}</p>
                 <div class="d-flex justify-content-between">
                   <button class="bg-warning text-white">Allow</button>
-                  @php
-                      $maxpeople=23;
-                      if ($people>$maxpeople) {$color='text-danger';}
-                      if ($people<$maxpeople) {$color='text-dark';}
-                  @endphp
-                  <p class="card-text" >persons : {{$maxpeople}} / <p class="{{$color}}">{{  $people  }}</p></p>
+                  <p class="card-text" >persons : 0 / {{  $people  }}</p>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center flex-column">
 
 
                   <div class="btn-group mt-2">
-                    {{-- <form action="{{route('events.destroy', ['id' => $itemEvent->id])}}" method="POST" class="me-1" style="width: 6vw">
-                      @csrf --}}
-                      <button type="submit" class="btn btn-sm btn-outline-secondary text-white bg-danger w-100">Delete</button>
-                      {{-- @method('DELETE')
-                    </form> --}}
 
-                    {{-- <a href="{{route('events.edit', ['id' => $itemEvent->id])}}" class="ms-1" style="width: 6vw"> --}}
+                      <button type="submit" class="btn btn-sm btn-outline-secondary text-white bg-danger w-100">Delete</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary text-white w-100" style="background-color: blue">Edit</button>
-                    {{-- </a> --}}
+
                   </div>
 
                 </div>
@@ -60,7 +44,6 @@
 
             <div class="form-group d-flex flex-row align-items-center mb-5">
               <label for="ImgURL" class="me-3 text-white">Image:  </label>
-              {{-- <input name='image' type="url" class="form-control" id="ImgURL" > --}}
 
               <input class="text-white" wire:model="image" type="file" name="image" id="" accept="image/*">
 
@@ -82,17 +65,13 @@
 
 
             <div class="form-group d-flex flex-row align-items-center">
-              <label for="people" class="me-3 text-primary">MaxPeople:  </label>
+              <label for="people" class="me-3 text-white">MaxPeople:  </label>
               <input wire:model="people" name='people' type="text" class="form-control" id="people" >
             </div>
             <div class="form-group d-flex flex-row align-items-center">
               <label for="date" class="me-3  text-white">dd/mm/aa:  </label>
               <input wire:model="date" name='date' type="datetime-local" class="form-control" id="date" >
             </div>
-            {{-- <div class="form-group d-flex flex-row align-items-center">
-              <label for="time" class="me-3 text-white">Time:  </label>
-              <input wire:model="time" name='time' type="text" class="form-control" id="time" >
-            </div> --}}
 
             <div class="d-flex justify-content-center mt-4">
               <button type="submit" class="btn btn-primary ">Submit</button>

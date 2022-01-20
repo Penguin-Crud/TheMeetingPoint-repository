@@ -29,9 +29,4 @@ class HomeMyEventsList extends Component
 
         $this->myEvents = Auth::user()->myJoinedEvents;
     }
-
-    // public function render()
-    // {
-    //     return view('livewire.home-my-events-list');
-    // }
 }
