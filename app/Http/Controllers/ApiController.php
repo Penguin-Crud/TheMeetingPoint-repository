@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -11,9 +12,10 @@ class ApiController extends Controller
     {
         return $event;
     }
-    
-    public function apiGetAllEvents()
+
+    public function paginateEvents()
     {
-        return Events::all();
+       
+        return Events::paginate(3);
     }
 }

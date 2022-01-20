@@ -61,13 +61,6 @@ class Events extends Model
         $this->students()->detach($user);
     }
 
-    /*
-        public function wantsToApply()
-        {
-            return $this->belongsToMany(User::class, 'students');
-        }
-    */
-
     public function countStudents()
     {
         return $this->students()->count();
@@ -76,5 +69,10 @@ class Events extends Model
     public function isFull(): bool
     {
         return $this->countStudents() >= $this->people;
+    }
+
+    public static function getEvents(int $start, int $end)
+    {
+        return self::slice($start,$end-$start);
     }
 }
