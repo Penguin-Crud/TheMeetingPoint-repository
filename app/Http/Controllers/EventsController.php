@@ -16,11 +16,17 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::all();
-        $events = Events::orderBy('date', 'asc')->get();
+        $onTimeEvents = Events::getOnTimeEvents();
+        $timeOutedEvents = Events::getTimeOutedEvents();
+
+        $events = $onTimeEvents->concat($timeOutedEvents);
+
+        foreach ($events as $event) {
+            $event->setUserTime();
+        }
 
         return view('landing', [
-            'events' => $events, 
+            'events' => $events,
             'highlightedEvents' => Events::highlightedEvents()
         ]);
     }
@@ -150,15 +156,6 @@ class EventsController extends Controller
 
     public function date(Request $request)
     {
-
-        // date_default_timezone_set('Europe/Madrid');
-        // $fecha_actual = $request->date;
-        // $time = strtotime($fecha_actual);
-        // $fechaLocal = date("d-m-Y H:i:s", $time);
-        // return [$fechaLocal, $request->title];
-
         $events = Events::orderBy('date', 'asc')->get();
-        dd($events);
     }
-
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/5.1/examples/album/ -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
- 
+
 <head>
 
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -59,7 +58,7 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-    
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -97,7 +96,7 @@
       z-index: 1;
     }
     .carousel-control-prev{
-      z-index: 0;  
+      z-index: 0;
     }
     .carousel-control-next{
       z-index: 0;
@@ -106,7 +105,7 @@
   </style>
 
   @livewireStyles
-    
+
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -114,7 +113,7 @@
     <div class="navbar navbar-dark shadow-sm">
       <div class="container">
         <a href=" {{ route('landing') }}" class="navbar-brand d-flex align-items-center">
-        <img src="../../../img/logo.png" style="width: 70%"/>  
+        <img src="../../../img/logo.png" style="width: 70%"/>
         </a>
         <h1 style="font-size: 3em; color: black"><strong>The Meeting Point</strong></h1>
         <button class="navbar-btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,25 +145,25 @@
                       <div>
                         <a href="{{ route('home') }}" class="styleAncors text-sm text-gray-700 dark:text-gray-500 underline">My events</a>
                         @auth
-              
+
                         @if (Auth::user()->isAdmin())
                           <a href="{{ route('events.create') }}" class="styleAncors" >New Event</a>
                         @endif
-                        
+
                         @endauth
                       </div>
                       <div>
                         <a id="navbarDropdown" class="styleAncors nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                               {{ Auth::user()->name }}
                         </a>
-  
+
                         <div class="dropdown-menu dropdown-menu-right bg-warning" aria-labelledby="navbarDropdown">
                             <a class="styleAncors dropdown-item" href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                             </a>
-  
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -173,39 +172,24 @@
                     </li>
                 @endguest
             </ul>
-              
+
             </ul>
           </div>
         </div>
       </div>
     </div>
   </header>
-  
-  @auth
-    <nav>
-      
-    </nav>
-  @endauth
 
   @yield('register')
   @yield('login')
   @yield('main')
   @yield('content')
   @yield('EventCreate')
-  
-  {{-- <footer class="text-muted py-5">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="https://getbootstrap.com/docs/5.1/examples/album/#">Back to top</a>
-      </p>
-      <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
-      <p class="mb-0">New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
-    </div>
-  </footer> --}}  
+
   <script src="{{asset('events-css/bootstrap.bundle.min.js.descarga')}}" ></script>
   <script type="text/javascript">
     //Fuente Original :  http://timelessname.com/sandbox/matrix.html
-    //Configura el canvas para que ocupe la pantalla entera 
+    //Configura el canvas para que ocupe la pantalla entera
     canvas.height = window.screen.height;
     canvas.width = window.screen.width;
 
@@ -220,7 +204,7 @@
         /*esto explica tanto el flash inicial de blanco a negro (por defecto el canvas es blanco y progresivamente se convierte en negro) como el fading de los caracteres.*/
         canvas.getContext('2d').fillStyle = 'rgba(0,0,0,0.05)';
         canvas.getContext('2d').fillRect(0, 0, canvas.width, canvas.height);
-        
+
         //verde
         canvas.getContext('2d').fillStyle = '#0F0';
         //para cada clolumna
@@ -235,7 +219,7 @@
                                             index * 10, //x
                                             value //y
                                             );
-            
+
             //desplaza hacia abajo el carácter
             //si el carácter es menor de 758 entonces hay una posibilidad aleatoria de que sea reseteado
             columns[index] = value > 758 + Math.random() * 1e4 ? 0 : value + 10
@@ -246,6 +230,6 @@
     setInterval(step, 33)
   </script>
   @livewireScripts
-  
+
 </body>
 </html>

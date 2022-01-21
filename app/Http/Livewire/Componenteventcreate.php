@@ -11,7 +11,6 @@ class Componenteventcreate extends Component
     public $description;
     public $people;
     public $date;
-    public $time;
 
     use WithFileUploads;
     public $image;
@@ -22,9 +21,4 @@ class Componenteventcreate extends Component
             'image' => 'image|max:2048',
         ]);
     }
-
-    // public function render()
-    // {
-    //     return view('livewire.articles');
-    // }
 }
