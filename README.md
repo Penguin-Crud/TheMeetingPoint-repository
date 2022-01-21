@@ -3,7 +3,14 @@ Se trata de un proyecto en equipo que realizamos en el Bootcamp de <a href="http
 <br>Ademas cuenta con un dashboard para el admin en el cual podemos crear nuevos eventos y editarlos en caso de error o cambios en cualquier tipo.
 >Para todo esto usamos una base de datos local en la cual hay 2 columnas principales una de usuarios y otra de eventos en la cual se vinculan una con la otra a la hora de que un usuario se susvribe a un evento. A continuacion te mostraremos lo que contiene cada columna.
 
-<img src="public/img/The_Meeting_Point_-_Grande.gif" style="width:250px">
+<br>
+
+<div style="text-align:center">
+  <img src="public/multimedia/The-Meeting-Point-Brave-2022-01-21-10-31-41.gif" style="width:500px">
+</div>
+
+<br>
+
 <h3>Usuario</h3>
 <ul> 
     <li>Un Nombre de usuario: Para saber que persona es la que esta suscrita al evento.</li>
