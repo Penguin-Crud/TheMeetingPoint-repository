@@ -57,6 +57,6 @@ Route::put('/update/{id}', [EventsController::class, 'update'])->name('events.up
 //     return $subscribeEvent->render();
 // })->middleware('auth');
 Route::get('api/event/{event}', [ApiController::class, 'apiGetEvent'])->name('events.api.item');
-Route::get('api/events', [ApiController::class, 'apiGetAllEvents'])->name('events.api.all');
+Route::get('api/events', [ApiController::class, 'paginateEvents'])->name('events.api.paginate');
 
 Route::get('/date', [EventsController::class, 'date'])->name('events.date')->middleware('auth');                            
