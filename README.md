@@ -3,7 +3,7 @@ Se trata de un proyecto en equipo que realizamos en el Bootcamp de <a href="http
 <br>Ademas cuenta con un dashboard para el admin en el cual podemos crear nuevos eventos y editarlos en caso de error o cambios en cualquier tipo.
 >Para todo esto usamos una base de datos local en la cual hay 2 columnas principales una de usuarios y otra de eventos en la cual se vinculan una con la otra a la hora de que un usuario se susvribe a un evento. A continuacion te mostraremos lo que contiene cada columna.
 
-<img src="public/">
+<img src="public/img/The_Meeting_Point_-_Grande.gif" style="width:250px">
 <h3>Usuario</h3>
 <ul> 
     <li>Un Nombre de usuario: Para saber que persona es la que esta suscrita al evento.</li>
@@ -35,7 +35,7 @@ Esta app cuenta con 6 vistas:
 
 Despues de toda esta explicacion vamos a ver que es lo que necesitamos para poder tener esta app. Let´s Gooooo!!!
 
-<img src="public/">
+
 
 <h2>Comenzamos 🚀</h2>
 
@@ -45,7 +45,6 @@ Para tener una copia de nuestro projecto debes de tener unos programas que a con
 
 Necestitamos: <a href="https://code.visualstudio.com/">Visual Studio Code</a>(O cualquier otro editor de codigo), <a href="https://github.com/">GitHub</a> y <a href="https://www.apachefriends.org/es/index.html">XAMPP</a>(En caso de tener Windows), <a href="https://www.mamp.info/de/windows/">MAMPP</a>(En caso de tener Mac) o <a>LAMPP</a>(En caso de tener Linux). En Linux se podria Instalar XAMPP tambien(<a href="https://www.apachefriends.org/es/faq_linux.html">Info</a>).
 
-<img src="public/">
 
 Que es Visual Studio Code, GitHub y XAMPP/MAMPP/LAMPP???
 
@@ -55,13 +54,11 @@ Que es Visual Studio Code, GitHub y XAMPP/MAMPP/LAMPP???
 
 <a href="https://github.com/">GitHub</a> es un repositorio online gratuito que permite gestionar proyectos y controlar versiones de código. Es muy utilizado por desarrolladores para almacenar sus trabajos dando así la oportunidad a millones de personas de todo el mundo a cooperar en ellos.
 
-<img src="public/">
 
 <h2>Instalación 🔧</h2>
 
 Te dejaremos en la etiqueta tutoriales unos videos para poder descargar e instalar cada programa. Ademas de un video de como configurarlos para que esten vinculados.
 
-<img src="public/">
 
 <h2>Tutoriales 📌</h2>
 
@@ -152,6 +149,15 @@ Crear base de datos y tablas:<a href="https://www.youtube.com/watch?v=xgltfvAkZa
 
 En el apartado DB_PASSWORD si tienes Windows el password por defecto seria un string vacio y si tienes mac el password seria "root".
 
+Por ultimo deberas configurar los apartados de EMAIL tendras que crear una cuenta en <a style="color:#0EF477" href="https://mailtrap.io/
+">Mailtrap</a> y deberas descargarte la configuracion del ".env". Por aqui abajo te dejamos un video explicativo:
+
+<br>
+
+[![Alt text](https://img.youtube.com/vi/e0ynchA_sBA/0.jpg)](https://www.youtube.com/watch?v=e0ynchA_sBA)
+
+<br>
+
 Una vez conectado con la base vamos a hacer la migracion de las factorias y seeders que contiene el proyecto a travez del siguiente comando:
 
 <br>
@@ -216,8 +222,6 @@ Integrantes y roles dentro del proyecto:
 
 </ul>
 
-<img src="public/">
-
 <h2>Expresiones de Gratitud 🎁</h2>
 
 <ul>
@@ -234,5 +238,4 @@ Integrantes y roles dentro del proyecto:
   <li>Etc.</li>
   
 </ul>
-<img src="public/">
 
