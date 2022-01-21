@@ -22,9 +22,4 @@ class Componenteventcreate extends Component
             'image' => 'image|max:2048',
         ]);
     }
-
-    // public function render()
-    // {
-    //     return view('livewire.articles');
-    // }
 }

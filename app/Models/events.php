@@ -20,7 +20,6 @@ class Events extends Model
         'url',
         'showSlider',
         'date',
-        // 'time',
         'description',
         'people',
     ];
@@ -69,10 +68,5 @@ class Events extends Model
     public function isFull(): bool
     {
         return $this->countStudents() >= $this->people;
-    }
-
-    public static function getEvents(int $start, int $end)
-    {
-        return self::slice($start,$end-$start);
     }
 }

@@ -9,7 +9,6 @@ use Livewire\Component;
 class HomeMyEventsList extends Component
 {
     public $myEvents;
-    
 
     public function mount() 
     {
@@ -23,9 +22,4 @@ class HomeMyEventsList extends Component
 
         $this->myEvents = Auth::user()->myJoinedEvents;
     }
-
-    // public function render()
-    // {
-    //     return view('livewire.home-my-events-list');
-    // }
 }

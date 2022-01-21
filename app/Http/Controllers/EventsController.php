@@ -16,7 +16,6 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::all();
         $events = Events::orderBy('date', 'asc')->get();
 
         return view('landing', [
@@ -83,9 +82,8 @@ class EventsController extends Controller
     {
         $eventToEdit = Events::findOrFail($id);
 
-        if (!Auth::user()->isAdmin) {
-            return back();
-        };
+        if (!Auth::user()->isAdmin) return back();
+        
         return view('eventEdit', ['event' => $eventToEdit]);
     }
 
@@ -146,19 +144,6 @@ class EventsController extends Controller
         $eventToDelete->delete();
 
         return back();
-    }
-
-    public function date(Request $request)
-    {
-
-        // date_default_timezone_set('Europe/Madrid');
-        // $fecha_actual = $request->date;
-        // $time = strtotime($fecha_actual);
-        // $fechaLocal = date("d-m-Y H:i:s", $time);
-        // return [$fechaLocal, $request->title];
-
-        $events = Events::orderBy('date', 'asc')->get();
-        dd($events);
     }
 
 }
