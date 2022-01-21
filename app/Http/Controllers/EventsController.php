@@ -16,10 +16,21 @@ class EventsController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $events = Events::orderBy('date', 'asc')->get();
+=======
+        $onTimeEvents = Events::getOnTimeEvents();
+        $timeOutedEvents = Events::getTimeOutedEvents();
+
+        $events = $onTimeEvents->concat($timeOutedEvents);
+
+        foreach ($events as $event) {
+            $event->setUserTime();
+        }
+>>>>>>> 22d69f65c94c111f25c3a5203fb307237cddf4ed
 
         return view('landing', [
-            'events' => $events, 
+            'events' => $events,
             'highlightedEvents' => Events::highlightedEvents()
         ]);
     }
@@ -146,4 +157,11 @@ class EventsController extends Controller
         return back();
     }
 
+<<<<<<< HEAD
+=======
+    public function date(Request $request)
+    {
+        $events = Events::orderBy('date', 'asc')->get();
+    }
+>>>>>>> 22d69f65c94c111f25c3a5203fb307237cddf4ed
 }

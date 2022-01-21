@@ -11,7 +11,6 @@ class Componenteventcreate extends Component
     public $description;
     public $people;
     public $date;
-    public $time;
 
     use WithFileUploads;
     public $image;

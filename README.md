@@ -3,7 +3,14 @@ Se trata de un proyecto en equipo que realizamos en el Bootcamp de <a href="http
 <br>Ademas cuenta con un dashboard para el admin en el cual podemos crear nuevos eventos y editarlos en caso de error o cambios en cualquier tipo.
 >Para todo esto usamos una base de datos local en la cual hay 2 columnas principales una de usuarios y otra de eventos en la cual se vinculan una con la otra a la hora de que un usuario se susvribe a un evento. A continuacion te mostraremos lo que contiene cada columna.
 
-<img src="public/">
+<br>
+
+<div style="text-align:center">
+  <img src="public/multimedia/The-Meeting-Point-Brave-2022-01-21-10-31-41.gif" style="width:500px">
+</div>
+
+<br>
+
 <h3>Usuario</h3>
 <ul> 
     <li>Un Nombre de usuario: Para saber que persona es la que esta suscrita al evento.</li>
@@ -35,7 +42,7 @@ Esta app cuenta con 6 vistas:
 
 Despues de toda esta explicacion vamos a ver que es lo que necesitamos para poder tener esta app. Let´s Gooooo!!!
 
-<img src="public/">
+
 
 <h2>Comenzamos 🚀</h2>
 
@@ -45,7 +52,6 @@ Para tener una copia de nuestro projecto debes de tener unos programas que a con
 
 Necestitamos: <a href="https://code.visualstudio.com/">Visual Studio Code</a>(O cualquier otro editor de codigo), <a href="https://github.com/">GitHub</a> y <a href="https://www.apachefriends.org/es/index.html">XAMPP</a>(En caso de tener Windows), <a href="https://www.mamp.info/de/windows/">MAMPP</a>(En caso de tener Mac) o <a>LAMPP</a>(En caso de tener Linux). En Linux se podria Instalar XAMPP tambien(<a href="https://www.apachefriends.org/es/faq_linux.html">Info</a>).
 
-<img src="public/">
 
 Que es Visual Studio Code, GitHub y XAMPP/MAMPP/LAMPP???
 
@@ -55,13 +61,11 @@ Que es Visual Studio Code, GitHub y XAMPP/MAMPP/LAMPP???
 
 <a href="https://github.com/">GitHub</a> es un repositorio online gratuito que permite gestionar proyectos y controlar versiones de código. Es muy utilizado por desarrolladores para almacenar sus trabajos dando así la oportunidad a millones de personas de todo el mundo a cooperar en ellos.
 
-<img src="public/">
 
 <h2>Instalación 🔧</h2>
 
 Te dejaremos en la etiqueta tutoriales unos videos para poder descargar e instalar cada programa. Ademas de un video de como configurarlos para que esten vinculados.
 
-<img src="public/">
 
 <h2>Tutoriales 📌</h2>
 
@@ -111,34 +115,96 @@ Si no lo tienes vas a necesitar instalar global o localmente Composer(Link a la 
 
 Si no lo tienes vas a necesitar instalar global o localmente Nodejs(Link a la pagina <a style="color:#00F520" href="https://nodejs.org/es/">Nodejs</a>). Este comando te creara la carpeta nodemodules.
 
-Ademas para conectar con la base de datos que tenemos en PhpMyAdmin debes crear un base de datos que se llame "consultas_cto" e importar el archivo que se encuentra en la carpeta "tablas", este archivo contiene las tablas que se necesitan en este projecto. les dejamos unos videos informativos a continuacion:
+<br>
+<br>
+
+
+>composer require livewire/livewire
+
+<br>
+
+<p align="center"><a href="https://laravel-livewire.com/" target="_blank"><img src="https://www.freewebsolution.it/wp-content/uploads/2021/05/guida-livewire-laravel.jpg" width="400"></a></p>
+
+Este comando sirve para poder ver los componentes que estan a travez de <a style="color:#D758C1" href="https://laravel-livewire.com/">Livewire</a> (Link a la pagina de livewire/laravel)
+
+<br>
+<br>
+
+>php artisan storage:link
+
+<br>
+
+Este comando sirve para tener un acceso directo a los archivos temporales. 
+
+<br>
+
+Antes de seguir con los comandos debemos crear un archivo que se llame ".env" tal cual se ve en l suiguien imagen. Este archivo va a ser el encargado de hacer la conexion con la base de datos.
+
+<img src="public/img/env.png">
+
+Dentro de este archivo va a ir lo que contiene el archivo de texto conexionDB.txt. Una vez tengas copiado el texto que contiene en el ".env" vas a tener que haver los siguientes cambios:
+
+<img src="public/img/configDB.png">
+
+<br>
+
+En el apartado DB_PORT vas a tener que tener que poner el puerto que contenga tu servidor XAMP, MAMP o LAMP.
+
+En el apartado DB_DATABASE vas a tener que poner el nombre del archivo que tengas en tu base de datos o en todo caso crear una base de datos con este nombre "ui_point". Les dejamos un video informativo a continuacion:
 
 Crear base de datos y tablas:<a href="https://www.youtube.com/watch?v=xgltfvAkZaE">Base de datos</a>
 
-Importar un tabla a PhpMyAdmin:<a href="https://www.youtube.com/watch?v=EZfiJu5qFMM">Tablas</a> 
+En el apartado DB_PASSWORD si tienes Windows el password por defecto seria un string vacio y si tienes mac el password seria "root".
 
-Por ultimo se debe crear un archivo con el nombre "Config.php" en la carpeta Core y copiar el siguinte codigo:
+Por ultimo deberas configurar los apartados de EMAIL tendras que crear una cuenta en <a style="color:#0EF477" href="https://mailtrap.io/
+">Mailtrap</a> y deberas descargarte la configuracion del ".env". Por aqui abajo te dejamos un video explicativo:
 
-<img src="public/"> 
+<br>
 
-Si tienes Windows la pass por defecto seria un string vacio y si tienes mac la pass seria "root".
+[![Alt text](https://img.youtube.com/vi/e0ynchA_sBA/0.jpg)](https://www.youtube.com/watch?v=e0ynchA_sBA)
 
-<img src="public/">
+<br>
+
+Una vez conectado con la base vamos a hacer la migracion de las factorias y seeders que contiene el proyecto a travez del siguiente comando:
+
+<br>
+
+>php artisan migrate:fresh --seed
+
+<br>
+
+Y por ultimo los 2 comandos para ver el proyecto en tu navegador:
+
+<br>
+
+>php artisan serve
+
+<br>
+
+Este comando te dara un servidor de desarrollo laravel donde vas a poder ir viendo tus cambios.
+
+<br>
+
+>npm run watch
+
+<br>
+
+Este comando te va a permitir ver tus cambios en lo que se refiere a estilos de css o bootstrap.
 
 <h2>Construido con 🛠️</h2>
   
 <ul>
   <li><a href="https://trello.com/">Trello</a> - Kanban o gestor de proyectos</li>
   
-  <li><a href="https://www.figma.com/">Figma</a> - Programa para diseñar el proyecto (Wireframe y Mockup)</li>
+  <li><a style="color:#7500D6" href="https://www.figma.com/">Figma</a> - Programa para diseñar el proyecto (Wireframe y Mockup)</li>
   
-  <li><a href="https://www.flaticon.com/">Flaticon</a> - Bancos de iconos</li>
+  <li><a style="color:#0EF477" href="https://www.flaticon.com/">Flaticon</a> - Bancos de iconos</li>
   
-  <li><a href="https://code.visualstudio.com/">Visual Studio Code</a> - Editor de codigo</li>
+  <li><a style="color:#0C41EA" href="https://code.visualstudio.com/">Visual Studio Code</a> - Editor de codigo</li>
 
-  <li><a href="https://www.apachefriends.org/es/index.html">XAMPP</a> - Servidor independiente de software libre</li>
+  <li><a style="color:#F58602" href="https://www.apachefriends.org/es/index.html">XAMPP</a> - Servidor independiente de software libre</li>
   
-  <li><a href="https://github.com/">GitHub</a> - Repositorio online</li>
+  <li><a style="color:#2313F5" href="https://github.com/">GitHub</a> - Repositorio online</li>
 </ul>
 
 <h2>Autores ✒️</h2>
@@ -153,7 +219,7 @@ Integrantes y roles dentro del proyecto:
 
   <li>Felicia Folatimilehin - Scrum Team - <a href="https://github.com/timfel20">timfel20</a></li>
   
-  <li>Sergi Fuentes - Scrum Team - <a href="https://github.com/SergiFuentes">SergiFuentes</a></li>
+  <li>Facundo Ramallo - Scrum Team - <a href="https://github.com/FacuRamallo">Facu Ramallo</a></li>
   
   <li>Biplop Dey - Scrum Team - <a href="https://github.com/biplopdey">biplopdey</a></li>
 
@@ -162,10 +228,6 @@ Integrantes y roles dentro del proyecto:
   <li>Lucas Martinez - Product Owner - <a href="https://github.com/LucasMartinez69">LucasMartinez69</a></li>
 
 </ul>
-
-Este grupo fue la fusion de 2 grupos y la siguiente imagen lo representa.
-
-<img src="public/">
 
 <h2>Expresiones de Gratitud 🎁</h2>
 
@@ -183,5 +245,4 @@ Este grupo fue la fusion de 2 grupos y la siguiente imagen lo representa.
   <li>Etc.</li>
   
 </ul>
-<img src="public/">
 

@@ -10,9 +10,16 @@ class HomeMyEventsList extends Component
 {
     public $myEvents;
 
-    public function mount() 
+
+    public function mount()
     {
         $this->myEvents = Auth::user()->myJoinedEvents;
+
+        foreach ($this->myEvents as $event) {
+            $event->setUserTime();
+        }
+
+        return $this->myEvents;
     }
 
     public function detach($id)
